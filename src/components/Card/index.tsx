@@ -1,17 +1,21 @@
-import { CardContainer } from "./styles";
+import { CardContainer, CardImageArea, CardInfoArea } from "./styles";
 
 interface CardProps {
-  //name: string;
+  name: string;
   img: string;
   //hp: number;
   //def: number;
   //atk: number;
 }
-export function Card({ /* name, */ img /* , hp, def, atk  */ }: CardProps) {
-  console.log(img);
+export function Card({ name, img /* , hp, def, atk  */ }: CardProps) {
   return (
     <CardContainer>
-      <img src={img} />
+      <CardImageArea>
+        <img src={img} />
+      </CardImageArea>
+      <CardInfoArea>
+        <strong>{name}</strong>
+      </CardInfoArea>
     </CardContainer>
   );
 }
