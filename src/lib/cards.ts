@@ -21,3 +21,5 @@ export const cardList = [
     atk: 40,
   },
 ];
+
+export const battleList = [{ id: "1", image: lDragon }];

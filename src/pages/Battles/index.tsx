@@ -6,7 +6,7 @@ export function Battles() {
     <BattlesContainer>
       <h1>Battle</h1>
       <section>
-        <BattleCard />
+        <BattleCard id={"1"} />
       </section>
     </BattlesContainer>
   );
