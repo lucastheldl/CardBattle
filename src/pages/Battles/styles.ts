@@ -9,4 +9,8 @@ export const BattlesContainer = styled.main`
   max-width: 1120px;
 
   margin: 0 auto;
+  section {
+    display: flex;
+    gap: 1rem;
+  }
 `;

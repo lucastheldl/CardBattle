@@ -1,6 +1,10 @@
 import artemia from "../assets/Transcendental been.jpg";
 import lDragon from "../assets/light dragon.jpg";
+import chaosDragon from "../assets/CaosDragon.png";
 import transcendental from "../assets/AthemiaTheImortalQueen.jpg";
+//battleimages
+import lDragonEnemy from "../assets/LightDragon.png";
+import chaosDragonEnemy from "../assets//CaosDragon.png";
 
 export const cardList = [
   {
@@ -22,4 +26,7 @@ export const cardList = [
   },
 ];
 
-export const battleList = [{ id: "1", image: lDragon }];
+export const battleList = [
+  { id: "1", image: lDragon, characterImg: lDragonEnemy },
+  { id: "2", image: chaosDragon, characterImg: chaosDragonEnemy },
+];

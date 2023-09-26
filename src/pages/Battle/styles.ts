@@ -7,12 +7,23 @@ export const BattleContainer = styled.main`
 
   width: 100%;
 
-  .bg {
+  .enemy {
+    animation: MoveUpDown 4s cubic-bezier(0.62, 0.67, 0.67, 1.05) infinite;
     width: 800px;
 
     transform: translate(2%, -30%);
 
     z-index: -1;
+
+    @keyframes MoveUpDown {
+      0%,
+      100% {
+        transform: translate(2%, -25%);
+      }
+      50% {
+        transform: translate(2%, -30%);
+      }
+    }
   }
 `;
 

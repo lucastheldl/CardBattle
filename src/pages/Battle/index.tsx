@@ -13,7 +13,7 @@ export function Battle() {
   const battleObject = battleList.find((battle) => battle.id === id);
   return (
     <BattleContainer>
-      <img src={battleObject!.image} className="bg" />
+      <img src={battleObject!.characterImg} className="enemy" />
       <Container>
         <div className="deck">
           {cardsInDeck &&
