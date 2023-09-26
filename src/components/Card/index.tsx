@@ -7,9 +7,12 @@ interface CardProps {
   //def: number;
   //atk: number;
 }
+
+function handleClick() {}
+
 export function Card({ name, img /* , hp, def, atk  */ }: CardProps) {
   return (
-    <CardContainer>
+    <CardContainer onClick={handleClick}>
       <CardImageArea>
         <img src={img} />
       </CardImageArea>
