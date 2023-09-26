@@ -1,14 +1,18 @@
 import { ReactNode, createContext, useState } from "react";
 
 interface Card {
+  id: string;
   name: string;
+  img: string;
   def: number;
   atk: number;
   hp: number;
 }
 
 type DeckContextType = {
-  addCard: (card: Card) => void;
+  cardsInDeck: Card[];
+  addCardToDeck: (card: Card) => void;
+  removeCardFromDeck: (id: string) => void;
 };
 type DeckContextProviderProps = {
   children: ReactNode;
@@ -17,13 +21,20 @@ type DeckContextProviderProps = {
 export const DeckContext = createContext({} as DeckContextType);
 
 export function DeckContextProvider({ children }: DeckContextProviderProps) {
-  const [cards, setCards] = useState<Card[]>([]);
+  const [cardsInDeck, setCardsInDeck] = useState<Card[]>([]);
 
-  function addCard(card: Card) {
-    setCards((prev) => [...prev, card]);
+  function addCardToDeck(card: Card) {
+    setCardsInDeck((prev) => [...prev, card]);
+  }
+  function removeCardFromDeck(id: string) {
+    setCardsInDeck(cardsInDeck.filter((card) => card.id !== id));
   }
 
   return (
-    <DeckContext.Provider value={{ addCard }}>{children}</DeckContext.Provider>
+    <DeckContext.Provider
+      value={{ cardsInDeck, addCardToDeck, removeCardFromDeck }}
+    >
+      {children}
+    </DeckContext.Provider>
   );
 }

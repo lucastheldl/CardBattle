@@ -1,23 +1,38 @@
+import { useContext } from "react";
 import { CardContainer, CardImageArea, CardInfoArea } from "./styles";
+import { DeckContext } from "../../context/DeckContext";
 
 interface CardProps {
+  id: string;
   name: string;
   img: string;
-  //hp: number;
-  //def: number;
-  //atk: number;
+  def: number;
+  atk: number;
+  hp: number;
 }
 
-function handleClick() {}
+export function Card(props: CardProps) {
+  const { cardsInDeck, addCardToDeck, removeCardFromDeck } =
+    useContext(DeckContext);
 
-export function Card({ name, img /* , hp, def, atk  */ }: CardProps) {
+  function handleClick() {
+    if (cardsInDeck && cardsInDeck.find((card) => card.id === props.id)) {
+      removeCardFromDeck(props.id);
+      return;
+    }
+    if (cardsInDeck.length >= 3) {
+      return;
+    }
+    addCardToDeck(props);
+  }
+
   return (
     <CardContainer onClick={handleClick}>
       <CardImageArea>
-        <img src={img} />
+        <img src={props.img} />
       </CardImageArea>
       <CardInfoArea>
-        <strong>{name}</strong>
+        <strong>{props.name}</strong>
       </CardInfoArea>
     </CardContainer>
   );

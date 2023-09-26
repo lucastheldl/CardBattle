@@ -5,15 +5,18 @@ import { BrowserRouter } from "react-router-dom";
 //components
 import { Header } from "./components/Header";
 import { Router } from "./Router";
+import { DeckContextProvider } from "./context/DeckContext";
 
 function App() {
   return (
     <ThemeProvider theme={defaultTheme}>
-      <BrowserRouter>
-        <GlobalStyle />
-        <Header />
-        <Router />
-      </BrowserRouter>
+      <DeckContextProvider>
+        <BrowserRouter>
+          <GlobalStyle />
+          <Header />
+          <Router />
+        </BrowserRouter>
+      </DeckContextProvider>
     </ThemeProvider>
   );
 }
