@@ -14,6 +14,7 @@ export const HeaderContainer = styled.nav`
 
   ul {
     display: flex;
+    align-items: center;
     gap: 1rem;
 
     list-style: none;
@@ -22,5 +23,11 @@ export const HeaderContainer = styled.nav`
   a {
     text-decoration: none;
     color: ${(props) => props.theme["red-500"]};
+
+    padding: 1rem;
+    border-radius: 6px;
+    &:hover {
+      color: ${(props) => props.theme["red-300"]};
+    }
   }
 `;

@@ -12,7 +12,7 @@ export function Battles() {
           return (
             <BattleCard
               id={battle.id}
-              characterImage={battle.image}
+              characterImage={battle.img}
               key={`${battle.id}-battle`}
             />
           );

@@ -32,14 +32,16 @@ export const cardList = [
 export const battleList = [
   {
     id: "1",
-    image: lDragon,
+    name: "Dragão da luz",
+    img: lDragon,
     characterImg: lDragonEnemy,
     scenarioImg: space,
     hp: 270,
   },
   {
     id: "2",
-    image: chaosDragon,
+    name: "Dragão do caos liberado",
+    img: chaosDragon,
     characterImg: chaosDragonEnemy,
     scenarioImg: mountain,
     hp: 270,

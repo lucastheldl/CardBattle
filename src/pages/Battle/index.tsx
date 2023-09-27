@@ -24,17 +24,18 @@ export function Battle() {
     console.log(`Causou:${atk} de dano`);
   }
   return (
-    <BattleContainer hpamount={(100 * currentHp) / battleObject!.hp}>
+    <BattleContainer>
       <img src={battleObject!.scenarioImg} className="bg" />
-      <div className="imageContainer">
-        <img src={battleObject!.characterImg} className="enemy" />
-        <div className="lifebar">
-          <div className="bar"></div>
-        </div>
-      </div>
-      <button onClick={() => reduceHp(30)}>Reduzir</button>
 
-      <Container>
+      <Container hpamount={(100 * currentHp) / battleObject!.hp}>
+        <div className="imageContainer">
+          <img src={battleObject!.characterImg} className="enemy" />
+          <div className="lifebar">
+            <div className="bar">{battleObject!.name}</div>
+          </div>
+          <button onClick={() => reduceHp(30)}>Reduzir</button>
+        </div>
+
         <div className="deck">
           {cardsInDeck &&
             cardsInDeck.map((card, i) => {

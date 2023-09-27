@@ -10,7 +10,7 @@ export function BattleCard({ id, characterImage }: BattleCardProps) {
   return (
     <BattleCardContainer>
       <img src={characterImage} />
-      <strong>Batalha 1</strong>
+      <strong>Batalha {id}</strong>
       <NavLink to={`/CardBattle/battles/${id}`}>Lutar</NavLink>
     </BattleCardContainer>
   );

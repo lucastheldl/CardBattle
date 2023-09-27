@@ -5,4 +5,7 @@ export const HomeContainer = styled.main`
   max-width: 1120px;
 
   margin: 0 auto;
+  P {
+    color: ${(props) => props.theme["red-500"]};
+  }
 `;

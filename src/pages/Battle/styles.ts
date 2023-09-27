@@ -1,36 +1,15 @@
 import { styled } from "styled-components";
 
-interface BattleContainerProps {
+interface ContainerProps {
   hpamount: number;
 }
-export const BattleContainer = styled.main<BattleContainerProps>`
+export const BattleContainer = styled.main`
   display: flex;
   flex-direction: column;
   gap: 1rem;
 
   width: 100%;
 
-  .imageContainer {
-    position: relative;
-    z-index: -1;
-  }
-
-  .enemy {
-    animation: MoveUpDown 4s cubic-bezier(0.62, 0.67, 0.67, 1.05) infinite;
-    width: 800px;
-
-    transform: translate(2%, -30%);
-
-    @keyframes MoveUpDown {
-      0%,
-      100% {
-        transform: translate(2%, -25%);
-      }
-      50% {
-        transform: translate(2%, -30%);
-      }
-    }
-  }
   .bg {
     object-fit: cover;
     position: absolute;
@@ -42,31 +21,12 @@ export const BattleContainer = styled.main<BattleContainerProps>`
 
     filter: blur(3px);
   }
-  .lifebar {
-    width: 500px;
-    height: 20px;
-
-    position: absolute;
-    bottom: 250px;
-    left: 200px;
-
-    border: 1px solid ${(props) => props.theme["gray-900"]};
-    border-radius: 6px;
-    overflow: hidden;
-
-    background-color: ${(props) => props.theme["gray-900"]};
-    .bar {
-      width: ${(props) => props.hpamount}%;
-      height: 100%;
-      background-color: ${(props) => props.theme["red-500"]};
-    }
-  }
 `;
 
-export const Container = styled.main`
+export const Container = styled.main<ContainerProps>`
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
+  align-items: center;
+  justify-content: space-between;
 
   width: 100%;
   max-width: 1300px;
@@ -74,9 +34,6 @@ export const Container = styled.main`
   margin: 0 auto;
 
   .deck {
-    position: absolute;
-    top: 400px;
-
     display: flex;
     gap: 0.5rem;
     height: 300px;
@@ -85,5 +42,51 @@ export const Container = styled.main`
     padding: 1rem;
     background-color: ${(props) => props.theme["red-500"]};
     border-radius: 6px;
+  }
+
+  .imageContainer {
+    position: relative;
+    z-index: -1;
+  }
+
+  .enemy {
+    animation: MoveUpDown 4s cubic-bezier(0.62, 0.67, 0.67, 1.05) infinite;
+    width: 800px;
+
+    @keyframes MoveUpDown {
+      0%,
+      100% {
+        transform: translate(2%, -25%);
+      }
+      50% {
+        transform: translate(2%, -30%);
+      }
+    }
+  }
+
+  .lifebar {
+    width: 500px;
+    height: 20px;
+
+    position: absolute;
+    top: 430px;
+    left: 200px;
+
+    border: 1px solid ${(props) => props.theme["gray-900"]};
+    border-radius: 6px;
+    overflow: hidden;
+
+    background-color: ${(props) => props.theme["gray-900"]};
+    .bar {
+      display: flex;
+      justify-content: center;
+
+      font-weight: bold;
+      color: ${(props) => props.theme["gray-100"]};
+
+      width: ${(props) => props.hpamount}%;
+      height: 100%;
+      background-color: ${(props) => props.theme["red-500"]};
+    }
   }
 `;
