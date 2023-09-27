@@ -3,6 +3,7 @@ import { styled } from "styled-components";
 export const DeckContainer = styled.main`
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 1rem;
 
   width: 100%;
@@ -16,7 +17,7 @@ export const DeckContainer = styled.main`
     gap: 0.5rem;
 
     padding: 1rem;
-    background-color: ${(props) => props.theme["gray-400"]};
+    background-color: ${(props) => props.theme["red-500"]};
     border-radius: 6px;
   }
   .avaliableCards {
@@ -24,7 +25,7 @@ export const DeckContainer = styled.main`
     width: 100%;
   }
   .deck {
-    height: 200px;
-    width: 100%;
+    height: 300px;
+    width: 550px;
   }
 `;

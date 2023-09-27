@@ -5,6 +5,9 @@ import transcendental from "../assets/AthemiaTheImortalQueen.jpg";
 //battleimages
 import lDragonEnemy from "../assets/LightDragon.png";
 import chaosDragonEnemy from "../assets//CaosDragon.png";
+//scenario
+import space from "../assets/c74e901922011b4516d02e7cff8cb45d.jpg";
+import mountain from "../assets/cba62536cf97f1a7441832d5b8bce18b.jpg";
 
 export const cardList = [
   {
@@ -27,6 +30,18 @@ export const cardList = [
 ];
 
 export const battleList = [
-  { id: "1", image: lDragon, characterImg: lDragonEnemy },
-  { id: "2", image: chaosDragon, characterImg: chaosDragonEnemy },
+  {
+    id: "1",
+    image: lDragon,
+    characterImg: lDragonEnemy,
+    scenarioImg: space,
+    hp: 270,
+  },
+  {
+    id: "2",
+    image: chaosDragon,
+    characterImg: chaosDragonEnemy,
+    scenarioImg: mountain,
+    hp: 270,
+  },
 ];

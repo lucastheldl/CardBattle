@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const HeaderContainer = styled.nav`
+export const FooterContainer = styled.nav`
   display: flex;
   justify-content: space-between;
 
@@ -9,8 +9,8 @@ export const HeaderContainer = styled.nav`
   font-size: 1.5rem;
   font-weight: bold;
 
-  border-bottom: 2px solid ${(props) => props.theme["red-500"]};
-  margin-bottom: 2rem;
+  border-top: 2px solid ${(props) => props.theme["red-500"]};
+  margin-top: 2rem;
 
   ul {
     display: flex;

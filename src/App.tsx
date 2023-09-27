@@ -6,6 +6,7 @@ import { BrowserRouter } from "react-router-dom";
 import { Header } from "./components/Header";
 import { Router } from "./Router";
 import { DeckContextProvider } from "./context/DeckContext";
+import { Footer } from "./components/Footer";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <GlobalStyle />
           <Header />
           <Router />
+          <Footer />
         </BrowserRouter>
       </DeckContextProvider>
     </ThemeProvider>

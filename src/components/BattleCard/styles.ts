@@ -30,12 +30,12 @@ export const BattleCardContainer = styled.div`
   }
 
   strong {
-    color: ${(props) => props.theme["gray-700"]};
+    color: ${(props) => props.theme["red-500"]};
   }
 
   a {
     padding: 1rem;
-    background-color: ${(props) => props.theme["green-500"]};
+    background-color: ${(props) => props.theme["red-500"]};
     border: none;
     border-radius: 6px;
 
@@ -48,7 +48,7 @@ export const BattleCardContainer = styled.div`
 
     &:hover {
       transition: 0.2s background-color;
-      background-color: ${(props) => props.theme["green-300"]};
+      background-color: ${(props) => props.theme["red-300"]};
       cursor: pointer;
     }
   }

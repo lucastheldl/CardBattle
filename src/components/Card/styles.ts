@@ -4,7 +4,7 @@ export const CardContainer = styled.button`
   display: flex;
   flex-direction: column;
 
-  background-color: ${(props) => props.theme["gray-100"]};
+  background-color: ${(props) => props.theme["gray-900"]};
   border: 1px solid ${(props) => props.theme["gray-500"]};
 
   border-radius: 6px;
@@ -38,7 +38,7 @@ export const CardInfoArea = styled.div`
   box-sizing: border-box;
 
   strong {
-    color: ${(props) => props.theme["gray-600"]};
+    color: ${(props) => props.theme["red-500"]};
     line-break: auto;
     text-align: center;
   }
