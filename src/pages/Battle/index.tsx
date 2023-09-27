@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { BattleContainer, Container } from "./styles";
+import { BattleContainer, Container, EnemyImage } from "./styles";
 
 import { battleList } from "../../lib/cards";
 import { useContext, useEffect, useState } from "react";
@@ -9,11 +9,14 @@ import { CardContext } from "../../context/CardContext";
 
 export function Battle() {
   const { id } = useParams();
-  const { cardsInDeck } = useContext(CardContext);
+  const { cardsInDeck, selectedCard } = useContext(CardContext);
   const { changeGameStage } = useContext(GameContext);
 
   const battleObject = battleList.find((battle) => battle.id === id);
+
   const [currentHp, setCurrentHp] = useState(battleObject!.hp);
+  const [characterCurrentImg, setCharacterCurrentImg] = useState("");
+  const [hit, setHit] = useState(0);
 
   async function reduceHp(atk: number) {
     if (currentHp <= atk) {
@@ -30,26 +33,50 @@ export function Battle() {
     changeGameStage("selecting");
   }, [changeGameStage]);
 
+  useEffect(() => {
+    if (!selectedCard) {
+      setCharacterCurrentImg("");
+      return;
+    }
+    console.log(selectedCard);
+    setCharacterCurrentImg(selectedCard.characterImg);
+  }, [selectedCard]);
+
   return (
     <BattleContainer>
       <img src={battleObject!.scenarioImg} className="bg" />
 
       <Container hpamount={(100 * currentHp) / battleObject!.hp}>
         <div className="imageContainer">
-          <img src={battleObject!.characterImg} className="enemy" />
+          <EnemyImage
+            src={battleObject!.characterImg}
+            onAnimationEnd={() => setHit(0)}
+            hit={hit}
+          />
           <div className="lifebar">
-            <div className="bar">{battleObject!.name}</div>
+            <div className="bar">
+              <p>{battleObject!.name}</p>
+            </div>
           </div>
         </div>
-        <div>
+
+        <div className="imageContainer">
+          <img src={characterCurrentImg} className="character" />
           <div className="deck">
             {cardsInDeck &&
               cardsInDeck.map((card, i) => {
                 return <Card {...card} key={`${card.id}-${i}`} />;
               })}
           </div>
-          <img src={""} className="character" />
-          <button onClick={() => reduceHp(30)}>Atk-1</button>
+
+          <button
+            onClick={() => {
+              reduceHp(30);
+              setHit(1);
+            }}
+          >
+            Atk-1
+          </button>
           <button onClick={() => reduceHp(10)}>Atk-2</button>
           <button onClick={() => reduceHp(40)}>Atk-3</button>
         </div>

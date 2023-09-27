@@ -4,6 +4,7 @@ interface Card {
   id: string;
   name: string;
   img: string;
+  characterImg: string;
   def: number;
   atk: number;
   hp: number;
@@ -34,9 +35,6 @@ export function CardContextProvider({ children }: CardContextProviderProps) {
   }
 
   function changeSelectedCard(card: Card | null) {
-    if (!card) {
-      setSelectedCard(null);
-    }
     setSelectedCard(card);
   }
 

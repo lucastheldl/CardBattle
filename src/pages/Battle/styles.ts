@@ -1,4 +1,4 @@
-import { styled } from "styled-components";
+import { css, styled } from "styled-components";
 
 interface ContainerProps {
   hpamount: number;
@@ -23,7 +23,7 @@ export const BattleContainer = styled.main`
   }
 `;
 
-export const Container = styled.main<ContainerProps>`
+export const Container = styled.div<ContainerProps>`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -47,25 +47,20 @@ export const Container = styled.main<ContainerProps>`
   .imageContainer {
     position: relative;
     min-height: 600px;
-    z-index: -1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
   }
 
   .enemy {
-    animation: MoveUpDown 4s cubic-bezier(0.62, 0.67, 0.67, 1.05) infinite;
-    width: 700px;
+  }
+  .character {
+    width: 900px;
     position: absolute;
-    top: 0;
-    left: -70px;
+    top: -300px;
 
-    @keyframes MoveUpDown {
-      0%,
-      100% {
-        transform: translate(2%, -25%);
-      }
-      50% {
-        transform: translate(2%, -30%);
-      }
-    }
+    z-index: -1;
   }
 
   .lifebar {
@@ -85,12 +80,54 @@ export const Container = styled.main<ContainerProps>`
       display: flex;
       justify-content: center;
 
-      font-weight: bold;
-      color: ${(props) => props.theme["gray-100"]};
-
       width: ${(props) => props.hpamount}%;
       height: 100%;
       background-color: ${(props) => props.theme["red-500"]};
+
+      p {
+        font-weight: bold;
+        color: ${(props) => props.theme["gray-100"]};
+      }
+    }
+  }
+`;
+
+interface EnemyImageProps {
+  hit: number;
+}
+export const EnemyImage = styled.img<EnemyImageProps>`
+  ${(props) =>
+    props.hit <= 0
+      ? css`
+          animation: MoveUpDown 4s cubic-bezier(0.62, 0.67, 0.67, 1.05) infinite;
+        `
+      : css`
+          animation: GetHit 0.2s cubic-bezier(0.62, 0.67, 0.67, 1.05) 1;
+          filter: grayscale(100%);
+        `}
+
+  width: 700px;
+  position: absolute;
+  top: -30;
+  left: -70px;
+  z-index: -1;
+
+  @keyframes MoveUpDown {
+    0%,
+    100% {
+      transform: translate(2%, -5%);
+    }
+    50% {
+      transform: translate(2%, -0%);
+    }
+  }
+  @keyframes GetHit {
+    0%,
+    100% {
+      transform: translate(-10%, -5%);
+    }
+    50% {
+      transform: translate(10%, -5%);
     }
   }
 `;

@@ -7,13 +7,14 @@ interface CardProps {
   id: string;
   name: string;
   img: string;
+  characterImg: string;
   def: number;
   atk: number;
   hp: number;
 }
 
 export function Card(props: CardProps) {
-  const { cardsInDeck, addCardToDeck, removeCardFromDeck } =
+  const { cardsInDeck, addCardToDeck, removeCardFromDeck, changeSelectedCard } =
     useContext(CardContext);
   const { gameStage } = useContext(GameContext);
 
@@ -23,8 +24,8 @@ export function Card(props: CardProps) {
         manageDeck();
         break;
       case "selecting":
-        break;
         selectCard();
+        break;
       default:
         break;
     }
@@ -40,7 +41,9 @@ export function Card(props: CardProps) {
     addCardToDeck(props);
   }
 
-  function selectCard() {}
+  function selectCard() {
+    changeSelectedCard(props);
+  }
 
   return (
     <CardContainer onClick={handleClick}>
