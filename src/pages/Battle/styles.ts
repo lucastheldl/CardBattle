@@ -53,8 +53,6 @@ export const Container = styled.div<ContainerProps>`
     align-items: center;
   }
 
-  .enemy {
-  }
   .character {
     width: 900px;
     position: absolute;
