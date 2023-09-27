@@ -13,7 +13,7 @@ export const GlobalStyle = createGlobalStyle`
       box-shadow: 0 0 0 2px ${(props) => props.theme["red-300"]}
   }
 
-  h1{
+  h1,h2{
     text-align:center;
     color:${(props) => props.theme["red-300"]}
   }
