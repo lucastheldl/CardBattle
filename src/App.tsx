@@ -5,20 +5,23 @@ import { BrowserRouter } from "react-router-dom";
 //components
 import { Header } from "./components/Header";
 import { Router } from "./Router";
-import { DeckContextProvider } from "./context/DeckContext";
+import { CardContextProvider } from "./context/CardContext";
 import { Footer } from "./components/Footer";
+import { GameContextProvider } from "./context/GameContext";
 
 function App() {
   return (
     <ThemeProvider theme={defaultTheme}>
-      <DeckContextProvider>
-        <BrowserRouter>
-          <GlobalStyle />
-          <Header />
-          <Router />
-          <Footer />
-        </BrowserRouter>
-      </DeckContextProvider>
+      <GameContextProvider>
+        <CardContextProvider>
+          <BrowserRouter>
+            <GlobalStyle />
+            <Header />
+            <Router />
+            <Footer />
+          </BrowserRouter>
+        </CardContextProvider>
+      </GameContextProvider>
     </ThemeProvider>
   );
 }

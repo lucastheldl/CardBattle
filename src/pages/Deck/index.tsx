@@ -1,11 +1,18 @@
 import { DeckContainer } from "./styles";
 import { cardList } from "../../lib/cards";
 import { Card } from "../../components/Card";
-import { useContext } from "react";
-import { DeckContext } from "../../context/DeckContext";
+import { useContext, useEffect } from "react";
+import { CardContext } from "../../context/CardContext";
+import { GameContext } from "../../context/GameContext";
 
 export function Deck() {
-  const { cardsInDeck } = useContext(DeckContext);
+  const { cardsInDeck } = useContext(CardContext);
+  const { changeGameStage } = useContext(GameContext);
+
+  useEffect(() => {
+    changeGameStage("deck");
+  }, [changeGameStage]);
+
   return (
     <DeckContainer>
       <h1>Deck</h1>

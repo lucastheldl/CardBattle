@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { CardContainer, CardImageArea, CardInfoArea } from "./styles";
-import { DeckContext } from "../../context/DeckContext";
+import { GameContext } from "../../context/GameContext";
+import { CardContext } from "../../context/CardContext";
 
 interface CardProps {
   id: string;
@@ -13,9 +14,22 @@ interface CardProps {
 
 export function Card(props: CardProps) {
   const { cardsInDeck, addCardToDeck, removeCardFromDeck } =
-    useContext(DeckContext);
+    useContext(CardContext);
+  const { gameStage } = useContext(GameContext);
 
   function handleClick() {
+    switch (gameStage) {
+      case "deck":
+        manageDeck();
+        break;
+      case "selecting":
+        break;
+        selectCard();
+      default:
+        break;
+    }
+  }
+  function manageDeck() {
     if (cardsInDeck && cardsInDeck.find((card) => card.id === props.id)) {
       removeCardFromDeck(props.id);
       return;
@@ -25,6 +39,8 @@ export function Card(props: CardProps) {
     }
     addCardToDeck(props);
   }
+
+  function selectCard() {}
 
   return (
     <CardContainer onClick={handleClick}>

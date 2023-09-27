@@ -4,7 +4,7 @@ export const HeaderContainer = styled.nav`
   display: flex;
   justify-content: space-between;
 
-  padding: 2rem;
+  padding: 1rem;
 
   font-size: 1.5rem;
   font-weight: bold;

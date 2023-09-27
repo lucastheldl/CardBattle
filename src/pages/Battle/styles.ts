@@ -46,12 +46,16 @@ export const Container = styled.main<ContainerProps>`
 
   .imageContainer {
     position: relative;
+    min-height: 600px;
     z-index: -1;
   }
 
   .enemy {
     animation: MoveUpDown 4s cubic-bezier(0.62, 0.67, 0.67, 1.05) infinite;
-    width: 800px;
+    width: 700px;
+    position: absolute;
+    top: 0;
+    left: -70px;
 
     @keyframes MoveUpDown {
       0%,
@@ -70,7 +74,7 @@ export const Container = styled.main<ContainerProps>`
 
     position: absolute;
     top: 430px;
-    left: 200px;
+    left: 50px;
 
     border: 1px solid ${(props) => props.theme["gray-900"]};
     border-radius: 6px;
