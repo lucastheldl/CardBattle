@@ -5,7 +5,7 @@ export const CardContainer = styled.button`
   flex-direction: column;
 
   background-color: ${(props) => props.theme["gray-900"]};
-  border: 1px solid ${(props) => props.theme["gray-500"]};
+  border: 1px solid ${(props) => props.theme["red-500"]};
 
   border-radius: 6px;
   padding: 0.5rem;

@@ -26,6 +26,8 @@ export function Card(props: CardProps) {
       case "selecting":
         selectCard();
         break;
+      case "display":
+        return;
       default:
         break;
     }

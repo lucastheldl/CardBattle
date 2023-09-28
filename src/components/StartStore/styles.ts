@@ -8,15 +8,18 @@ export const StartStoreWrapper = styled.section`
   border-top: 2px solid ${(props) => props.theme["red-500"]};
 
   overflow: hidden;
-  img {
-    object-fit: cover;
+  .cover {
     position: absolute;
     top: 0;
-    left: 0;
+    height: 2000px;
     width: 100%;
-    height: 100%;
-
     z-index: -1;
+    img {
+      object-fit: cover;
+      transform: translateY(30%);
+      width: 100%;
+      height: 100%;
+    }
   }
 `;
 export const StartStoreContainer = styled.div`
@@ -26,15 +29,16 @@ export const StartStoreContainer = styled.div`
   width: 100%;
   max-width: 1120px;
 
-  padding: 2rem;
+  padding: 3.5rem;
 
   margin: 0 auto;
 
   .deck {
     display: flex;
-    gap: 0.5rem;
+    justify-content: center;
+    gap: 2rem;
     height: 300px;
-    width: 550px;
+    width: 700px;
 
     padding: 1rem;
     //background-color: ${(props) => props.theme["red-500"]};
