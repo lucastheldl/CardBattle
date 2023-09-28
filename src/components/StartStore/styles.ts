@@ -70,7 +70,11 @@ export const BuyButton = styled.button`
   color: ${(props) => props.theme["gray-100"]};
   border: 1px solid transparent;
 
-  &:hover {
+  &:disabled {
+    background-color: ${(props) => props.theme["gray-800"]};
+    cursor: not-allowed;
+  }
+  &:not(:disabled):hover {
     transition: 0.2s background-color;
     background-color: ${(props) => props.theme["red-300"]};
     border: 1px solid ${(props) => props.theme["gray-800"]};

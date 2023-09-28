@@ -12,6 +12,7 @@ interface Card {
 
 type CardContextType = {
   cardsInDeck: Card[];
+  OwnCards: Card[];
   selectedCard: Card | null;
   addCardToDeck: (card: Card) => void;
   removeCardFromDeck: (id: string) => void;
@@ -25,10 +26,12 @@ export const CardContext = createContext({} as CardContextType);
 
 export function CardContextProvider({ children }: CardContextProviderProps) {
   const [cardsInDeck, setCardsInDeck] = useState<Card[]>([]);
+  const [OwnCards, setOwnCards] = useState<Card[]>([]);
   const [selectedCard, setSelectedCard] = useState<Card | null>(null);
 
   function addCardToDeck(card: Card) {
     setCardsInDeck((prev) => [...prev, card]);
+    setOwnCards((prev) => [...prev, card]);
   }
   function removeCardFromDeck(id: string) {
     setCardsInDeck(cardsInDeck.filter((card) => card.id !== id));
@@ -42,6 +45,7 @@ export function CardContextProvider({ children }: CardContextProviderProps) {
     <CardContext.Provider
       value={{
         cardsInDeck,
+        OwnCards,
         selectedCard,
         addCardToDeck,
         removeCardFromDeck,
