@@ -4,6 +4,8 @@ export const CardContainer = styled.button`
   display: flex;
   flex-direction: column;
 
+  height: 270px;
+
   background-color: ${(props) => props.theme["gray-900"]};
   border: 1px solid ${(props) => props.theme["red-500"]};
 

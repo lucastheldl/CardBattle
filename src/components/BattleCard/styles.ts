@@ -38,6 +38,7 @@ export const BattleCardContainer = styled.div`
     background-color: ${(props) => props.theme["red-500"]};
     border: none;
     border-radius: 6px;
+    box-sizing: border-box;
 
     width: 100%;
 
@@ -45,10 +46,12 @@ export const BattleCardContainer = styled.div`
     text-align: center;
     text-decoration: none;
     color: ${(props) => props.theme["gray-100"]};
+    border: 1px solid transparent;
 
     &:hover {
       transition: 0.2s background-color;
       background-color: ${(props) => props.theme["red-300"]};
+      border: 1px solid ${(props) => props.theme["gray-800"]};
       cursor: pointer;
     }
   }

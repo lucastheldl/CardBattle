@@ -21,6 +21,11 @@ export const StartStoreWrapper = styled.section`
       height: 100%;
     }
   }
+
+  h1 {
+    font-size: 2rem;
+    text-shadow: 1px 1px 0.1px ${(props) => props.theme["gray-800"]};
+  }
 `;
 export const StartStoreContainer = styled.div`
   display: flex;
@@ -32,16 +37,44 @@ export const StartStoreContainer = styled.div`
   padding: 3.5rem;
 
   margin: 0 auto;
+`;
+export const Deck = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  height: 340px;
+  width: 700px;
 
-  .deck {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    height: 300px;
-    width: 700px;
+  padding: 1rem;
+  //background-color: ${(props) => props.theme["red-500"]};
+  border-radius: 6px;
+`;
 
-    padding: 1rem;
-    //background-color: ${(props) => props.theme["red-500"]};
-    border-radius: 6px;
+export const CardContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+`;
+
+export const BuyButton = styled.button`
+  padding: 1rem;
+  background-color: ${(props) => props.theme["red-500"]};
+  border: none;
+  border-radius: 6px;
+  box-sizing: border-box;
+
+  width: 100%;
+
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  color: ${(props) => props.theme["gray-100"]};
+  border: 1px solid transparent;
+
+  &:hover {
+    transition: 0.2s background-color;
+    background-color: ${(props) => props.theme["red-300"]};
+    border: 1px solid ${(props) => props.theme["gray-800"]};
+    cursor: pointer;
   }
 `;

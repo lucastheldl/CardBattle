@@ -12,7 +12,6 @@ export function Home() {
   }, [changeGameStage]);
   return (
     <HomeContainer>
-      <h1>Home</h1>
       <About />
       <StartStore />
     </HomeContainer>
