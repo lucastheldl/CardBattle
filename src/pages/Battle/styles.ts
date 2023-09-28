@@ -37,7 +37,10 @@ export const Container = styled.div`
     z-index: -1;
   }
 `;
-export const Deck = styled.div`
+interface DeckProps {
+  gamestate: "display" | "deck" | "selecting" | "battle";
+}
+export const Deck = styled.div<DeckProps>`
   display: flex;
   gap: 0.5rem;
   height: 300px;
@@ -46,6 +49,15 @@ export const Deck = styled.div`
   padding: 1rem;
   background-color: ${(props) => props.theme["red-500"]};
   border-radius: 6px;
+
+  transition: 1s all;
+
+  ${(props) =>
+    props.gamestate === "battle" &&
+    css`
+      transform: translateX(100%);
+      opacity: 0;
+    `}
 `;
 
 export const ImageContainer = styled.div`

@@ -19,7 +19,6 @@ export function StartStore() {
     translateY: [-10, 50],
   });
 
-  console.log(OwnCards.filter((e) => e.id === cardList[1].id).length > 0);
   return (
     <StartStoreWrapper>
       <Cover>

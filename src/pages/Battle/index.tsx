@@ -18,7 +18,7 @@ import { CardContext } from "../../context/CardContext";
 export function Battle() {
   const { id } = useParams();
   const { cardsInDeck, selectedCard } = useContext(CardContext);
-  const { changeGameStage } = useContext(GameContext);
+  const { gameStage, changeGameStage } = useContext(GameContext);
 
   const battleObject = battleList.find((battle) => battle.id === id);
 
@@ -39,7 +39,7 @@ export function Battle() {
 
   useEffect(() => {
     changeGameStage("selecting");
-  }, [changeGameStage]);
+  }, []);
 
   useEffect(() => {
     if (!selectedCard) {
@@ -70,7 +70,7 @@ export function Battle() {
 
         <ImageContainer>
           <img src={characterCurrentImg} className="character" />
-          <Deck>
+          <Deck gamestate={gameStage}>
             {cardsInDeck &&
               cardsInDeck.map((card, i) => {
                 return <Card {...card} key={`${card.id}-${i}`} />;

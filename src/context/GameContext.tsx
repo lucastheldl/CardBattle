@@ -1,6 +1,6 @@
 import { ReactNode, createContext, useState } from "react";
 
-type GameStage = "display" | "deck" | "selecting";
+type GameStage = "display" | "deck" | "selecting" | "battle";
 type DeckContextType = {
   gameStage: GameStage;
   changeGameStage: (stage: GameStage) => void;
