@@ -47,6 +47,8 @@ export const battleList = [
     characterImg: lDragonEnemy,
     scenarioImg: space,
     hp: 270,
+    atk: 40,
+    def: 30,
   },
   {
     id: "2",
@@ -55,5 +57,7 @@ export const battleList = [
     characterImg: chaosDragonEnemy,
     scenarioImg: mountain,
     hp: 270,
+    atk: 40,
+    def: 30,
   },
 ];

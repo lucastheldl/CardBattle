@@ -5,6 +5,8 @@ export const BattleContainer = styled.main`
   flex-direction: column;
   gap: 1rem;
 
+  overflow-x: clip;
+
   width: 100%;
 `;
 export const Bg = styled.img`

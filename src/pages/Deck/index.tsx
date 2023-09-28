@@ -6,11 +6,12 @@ import { CardContext } from "../../context/CardContext";
 import { GameContext } from "../../context/GameContext";
 
 export function Deck() {
-  const { cardsInDeck } = useContext(CardContext);
+  const { cardsInDeck, changeSelectedCard } = useContext(CardContext);
   const { changeGameStage } = useContext(GameContext);
 
   useEffect(() => {
     changeGameStage("deck");
+    changeSelectedCard(null);
   }, [changeGameStage]);
 
   return (
