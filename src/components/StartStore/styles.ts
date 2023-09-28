@@ -8,23 +8,22 @@ export const StartStoreWrapper = styled.section`
   border-top: 2px solid ${(props) => props.theme["red-500"]};
 
   overflow: hidden;
-  .cover {
-    position: absolute;
-    top: 0;
-    height: 2000px;
-    width: 100%;
-    z-index: -1;
-    img {
-      object-fit: cover;
-      transform: translateY(30%);
-      width: 100%;
-      height: 100%;
-    }
-  }
-
   h1 {
     font-size: 2rem;
     text-shadow: 1px 1px 0.1px ${(props) => props.theme["gray-800"]};
+  }
+`;
+export const Cover = styled.div`
+  position: absolute;
+  top: 0;
+  height: 2000px;
+  width: 100%;
+  z-index: -1;
+  img {
+    object-fit: cover;
+    transform: translateY(30%);
+    width: 100%;
+    height: 100%;
   }
 `;
 export const StartStoreContainer = styled.div`

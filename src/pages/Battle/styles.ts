@@ -1,29 +1,25 @@
 import { css, styled } from "styled-components";
 
-interface ContainerProps {
-  hpamount: number;
-}
 export const BattleContainer = styled.main`
   display: flex;
   flex-direction: column;
   gap: 1rem;
 
   width: 100%;
+`;
+export const Bg = styled.img`
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
 
-  .bg {
-    object-fit: cover;
-    position: absolute;
-    top: 0;
-    left: 0;
+  width: 100%;
+  z-index: -10;
 
-    width: 100%;
-    z-index: -10;
-
-    filter: blur(3px);
-  }
+  filter: blur(3px);
 `;
 
-export const Container = styled.div<ContainerProps>`
+export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -33,26 +29,6 @@ export const Container = styled.div<ContainerProps>`
 
   margin: 0 auto;
 
-  .deck {
-    display: flex;
-    gap: 0.5rem;
-    height: 300px;
-    width: 550px;
-
-    padding: 1rem;
-    background-color: ${(props) => props.theme["red-500"]};
-    border-radius: 6px;
-  }
-
-  .imageContainer {
-    position: relative;
-    min-height: 600px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: center;
-  }
-
   .character {
     width: 900px;
     position: absolute;
@@ -60,32 +36,55 @@ export const Container = styled.div<ContainerProps>`
 
     z-index: -1;
   }
+`;
+export const Deck = styled.div`
+  display: flex;
+  gap: 0.5rem;
+  height: 300px;
+  width: 550px;
 
-  .lifebar {
-    width: 500px;
-    height: 20px;
+  padding: 1rem;
+  background-color: ${(props) => props.theme["red-500"]};
+  border-radius: 6px;
+`;
 
-    position: absolute;
-    top: 430px;
-    left: 50px;
+export const ImageContainer = styled.div`
+  position: relative;
+  min-height: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+`;
 
-    border: 1px solid ${(props) => props.theme["gray-900"]};
-    border-radius: 6px;
-    overflow: hidden;
+interface ContainerProps {
+  hpamount: number;
+}
 
-    background-color: ${(props) => props.theme["gray-900"]};
-    .bar {
-      display: flex;
-      justify-content: center;
+export const LifeBar = styled.div<ContainerProps>`
+  width: 500px;
+  height: 20px;
 
-      width: ${(props) => props.hpamount}%;
-      height: 100%;
-      background-color: ${(props) => props.theme["red-500"]};
+  position: absolute;
+  top: 430px;
+  left: 50px;
 
-      p {
-        font-weight: bold;
-        color: ${(props) => props.theme["gray-100"]};
-      }
+  border: 1px solid ${(props) => props.theme["gray-900"]};
+  border-radius: 6px;
+  overflow: hidden;
+
+  background-color: ${(props) => props.theme["gray-900"]};
+  .bar {
+    display: flex;
+    justify-content: center;
+
+    width: ${(props) => props.hpamount}%;
+    height: 100%;
+    background-color: ${(props) => props.theme["red-500"]};
+
+    p {
+      font-weight: bold;
+      color: ${(props) => props.theme["gray-100"]};
     }
   }
 `;

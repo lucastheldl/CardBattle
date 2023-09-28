@@ -1,6 +1,7 @@
 import {
   BuyButton,
   CardContainer,
+  Cover,
   Deck,
   StartStoreContainer,
   StartStoreWrapper,
@@ -17,9 +18,10 @@ export function StartStore() {
 
   return (
     <StartStoreWrapper>
-      <div className="cover">
+      <Cover>
         <img src={bg} alt="" ref={parallax.ref} />
-      </div>
+      </Cover>
+
       <StartStoreContainer>
         <h1>Compre sua primeira carta!</h1>
         <Deck>

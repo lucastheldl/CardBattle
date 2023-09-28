@@ -1,5 +1,13 @@
 import { useParams } from "react-router-dom";
-import { BattleContainer, Container, EnemyImage } from "./styles";
+import {
+  BattleContainer,
+  Bg,
+  Container,
+  Deck,
+  EnemyImage,
+  ImageContainer,
+  LifeBar,
+} from "./styles";
 
 import { battleList } from "../../lib/cards";
 import { useContext, useEffect, useState } from "react";
@@ -44,30 +52,30 @@ export function Battle() {
 
   return (
     <BattleContainer>
-      <img src={battleObject!.scenarioImg} className="bg" />
+      <Bg src={battleObject!.scenarioImg} className="bg" />
 
-      <Container hpamount={(100 * currentHp) / battleObject!.hp}>
-        <div className="imageContainer">
+      <Container>
+        <ImageContainer>
           <EnemyImage
             src={battleObject!.characterImg}
             onAnimationEnd={() => setHit(0)}
             hit={hit}
           />
-          <div className="lifebar">
+          <LifeBar hpamount={(100 * currentHp) / battleObject!.hp}>
             <div className="bar">
               <p>{battleObject!.name}</p>
             </div>
-          </div>
-        </div>
+          </LifeBar>
+        </ImageContainer>
 
-        <div className="imageContainer">
+        <ImageContainer>
           <img src={characterCurrentImg} className="character" />
-          <div className="deck">
+          <Deck>
             {cardsInDeck &&
               cardsInDeck.map((card, i) => {
                 return <Card {...card} key={`${card.id}-${i}`} />;
               })}
-          </div>
+          </Deck>
 
           <button
             onClick={() => {
@@ -79,7 +87,7 @@ export function Battle() {
           </button>
           <button onClick={() => reduceHp(10)}>Atk-2</button>
           <button onClick={() => reduceHp(40)}>Atk-3</button>
-        </div>
+        </ImageContainer>
       </Container>
     </BattleContainer>
   );

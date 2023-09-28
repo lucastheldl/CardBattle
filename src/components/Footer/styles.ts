@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const FooterContainer = styled.nav`
+export const FooterContainer = styled.footer`
   display: flex;
   justify-content: space-between;
 
