@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import {
   BattleContainer,
   Bg,
@@ -22,11 +22,13 @@ export function Battle() {
   const { gameStage, attacked, changeGameStage, changeAttacked } =
     useContext(GameContext);
 
+  const navigate = useNavigate();
   const battleObject = battleList.find((battle) => battle.id === id);
 
   const [currentHp, setCurrentHp] = useState(battleObject!.hp);
   const [currentPlayerHp, setCurrentPlayerHp] = useState(0);
   const [characterCurrentImg, setCharacterCurrentImg] = useState("");
+  const [currentDeck, setCurrentDeck] = useState(cardsInDeck);
   const [hit, setHit] = useState(0);
 
   async function reduceHp(atk: number) {
@@ -39,7 +41,7 @@ export function Battle() {
     }
     setCurrentHp((prev) => (prev -= atk));
     changeAttacked(true);
-    console.log(`Causou:${atk} de dano`);
+    //console.log(`Causou:${atk} de dano`);
 
     await new Promise((resolve) => setTimeout(resolve, 2000));
     reducePlayerHp();
@@ -49,16 +51,29 @@ export function Battle() {
     if (currentPlayerHp <= battleObject!.atk) {
       setCurrentPlayerHp(0);
       await new Promise((resolve) => setTimeout(resolve, 1000));
-      window.alert("Você foi derrotado!");
-      changeSelectedCard(null);
-      changeGameStage("selecting");
+      setCurrentDeck(
+        currentDeck.filter((card) => card.id !== selectedCard!.id)
+      );
+      console.log(currentDeck);
+      //se ainda houver cartas pra pegar
 
       return;
     }
     setCurrentPlayerHp((prev) => (prev -= battleObject!.atk));
     changeAttacked(false);
-    console.log(`Recebeu:${battleObject!.atk} de dano`);
+    //console.log(`Recebeu:${battleObject!.atk} de dano`);
   }
+  useEffect(() => {
+    if (currentDeck.length > 0) {
+      changeSelectedCard(null);
+      changeGameStage("selecting");
+    } else {
+      //se nao
+      window.alert("Você foi derrotado!");
+      navigate("/CardBattle/");
+    }
+    // action on update of movies
+  }, [currentDeck]);
 
   useEffect(() => {
     changeGameStage("selecting");
@@ -101,8 +116,8 @@ export function Battle() {
             </LifeBar>
           )}
           <Deck gamestate={gameStage}>
-            {cardsInDeck &&
-              cardsInDeck.map((card, i) => {
+            {currentDeck &&
+              currentDeck.map((card, i) => {
                 return <Card {...card} key={`${card.id}-${i}`} />;
               })}
           </Deck>

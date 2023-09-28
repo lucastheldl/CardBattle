@@ -16,7 +16,8 @@ interface CardProps {
 export function Card(props: CardProps) {
   const { cardsInDeck, addCardToDeck, removeCardFromDeck, changeSelectedCard } =
     useContext(CardContext);
-  const { gameStage, changeGameStage } = useContext(GameContext);
+  const { gameStage, changeGameStage, changeAttacked } =
+    useContext(GameContext);
 
   function handleClick() {
     switch (gameStage) {
@@ -46,6 +47,7 @@ export function Card(props: CardProps) {
   function selectCard() {
     changeSelectedCard(props);
     changeGameStage("battle");
+    changeAttacked(false);
   }
 
   return (
