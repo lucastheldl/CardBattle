@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const FooterContainer = styled.footer`
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
 
   padding: 2rem;
 
@@ -20,7 +20,17 @@ export const FooterContainer = styled.footer`
   }
 
   a {
+    display: flex;
+    gap: 10px;
+
+    padding: 0.5rem;
+    border-radius: 6px;
     text-decoration: none;
     color: ${(props) => props.theme["red-500"]};
+
+    &:hover {
+      transition: 0.2s all;
+      color: ${(props) => props.theme["red-300"]};
+    }
   }
 `;

@@ -21,13 +21,23 @@ export const HeaderContainer = styled.nav`
   }
 
   a {
+    display: flex;
+    gap: 10px;
+    align-items: center;
     text-decoration: none;
     color: ${(props) => props.theme["red-500"]};
 
     padding: 1rem;
     border-radius: 6px;
+
+    span {
+      color: ${(props) => props.theme["red-300"]};
+    }
     &:hover {
       color: ${(props) => props.theme["red-300"]};
+      span {
+        color: ${(props) => props.theme["red-500"]};
+      }
     }
   }
 `;

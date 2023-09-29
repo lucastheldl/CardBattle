@@ -1,16 +1,25 @@
 import { NavLink } from "react-router-dom";
 import { HeaderContainer } from "./styles";
+import { Swords, Inbox } from "lucide-react";
 
 export function Header() {
   return (
     <HeaderContainer>
-      <NavLink to="/CardBattle/">Card Battle</NavLink>
+      <NavLink to="/CardBattle/">
+        Card<span>Battle</span>
+      </NavLink>
       <ul>
         <li>
-          <NavLink to="/CardBattle/battles">Battles</NavLink>
+          <NavLink to="/CardBattle/battles">
+            <Swords width={22} />
+            Battles
+          </NavLink>
         </li>
         <li>
-          <NavLink to="/CardBattle/deck">Deck</NavLink>
+          <NavLink to="/CardBattle/deck">
+            <Inbox width={22} />
+            Deck
+          </NavLink>
         </li>
       </ul>
     </HeaderContainer>
