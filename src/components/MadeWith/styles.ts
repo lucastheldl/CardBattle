@@ -10,10 +10,18 @@ export const MadeWithWrapper = styled.section`
   }
 `;
 export const MadeWithContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+
   width: 100%;
   max-width: 1120px;
 
-  padding: 3.5rem;
+  padding: 5rem 3.5rem;
 
   margin: 0 auto;
+
+  img {
+    width: 100px;
+  }
 `;
