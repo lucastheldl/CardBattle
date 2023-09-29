@@ -21,7 +21,7 @@ export const Cover = styled.div`
   z-index: -1;
   img {
     object-fit: cover;
-    transform: translateY(30%);
+    //transform: translateY(68%);
     width: 100%;
     height: 100%;
   }

@@ -18,7 +18,7 @@ import { CardType } from "../../lib/cards";
 export function StartStore() {
   const { OwnCards, addOwnCard } = useContext(CardContext);
   const parallax = useParallax({
-    translateY: [-10, 50],
+    translateY: [-30, 35],
   });
 
   function handleBuy(card: CardType) {
