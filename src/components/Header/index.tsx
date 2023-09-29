@@ -12,7 +12,7 @@ export function Header() {
         <li>
           <NavLink to="/CardBattle/battles">
             <Swords width={22} />
-            Battles
+            Batalhas
           </NavLink>
         </li>
         <li>
