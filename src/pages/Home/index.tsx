@@ -4,6 +4,7 @@ import { StartStore } from "../../components/StartStore";
 import { HomeContainer } from "./styles";
 import { GameContext } from "../../context/GameContext";
 import { CardContext } from "../../context/CardContext";
+import { MadeWith } from "../../components/MadeWith";
 
 export function Home() {
   const { changeGameStage } = useContext(GameContext);
@@ -17,6 +18,7 @@ export function Home() {
     <HomeContainer>
       <About />
       <StartStore />
+      <MadeWith />
     </HomeContainer>
   );
 }

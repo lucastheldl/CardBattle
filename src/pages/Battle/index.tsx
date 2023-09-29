@@ -1,7 +1,10 @@
 import { useNavigate, useParams } from "react-router-dom";
 import {
+  AttackBtn,
+  AttackOptions,
   BattleContainer,
   Bg,
+  CharacterImage,
   Container,
   Deck,
   EnemyImage,
@@ -30,38 +33,46 @@ export function Battle() {
   const [characterCurrentImg, setCharacterCurrentImg] = useState("");
   const [currentDeck, setCurrentDeck] = useState(cardsInDeck);
   const [hit, setHit] = useState(0);
+  const [playerHit, setPlayerHit] = useState(0);
+  const [playerAttack, setPlayerAttack] = useState(0);
 
   async function reduceHp(atk: number) {
+    //ativate player attack anim
+    setPlayerAttack(1);
+    await new Promise((resolve) => setTimeout(resolve, 500));
+    //ativate enemy hit anim
+    setHit(1);
+
     if (currentHp <= atk) {
       setCurrentHp(0);
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      await new Promise((resolve) => setTimeout(resolve, 500));
       window.alert("VITÓRIA!");
+      navigate("/CardBattle/battles/");
 
       return;
     }
     setCurrentHp((prev) => (prev -= atk));
+    //inform ir player has attacked
     changeAttacked(true);
-    //console.log(`Causou:${atk} de dano`);
 
-    await new Promise((resolve) => setTimeout(resolve, 2000));
+    await new Promise((resolve) => setTimeout(resolve, 3000));
     reducePlayerHp();
   }
 
   async function reducePlayerHp() {
     if (currentPlayerHp <= battleObject!.atk) {
+      setPlayerHit(1);
       setCurrentPlayerHp(0);
       await new Promise((resolve) => setTimeout(resolve, 1000));
       setCurrentDeck(
         currentDeck.filter((card) => card.id !== selectedCard!.id)
       );
-      console.log(currentDeck);
-      //se ainda houver cartas pra pegar
 
       return;
     }
+    setPlayerHit(1);
     setCurrentPlayerHp((prev) => (prev -= battleObject!.atk));
     changeAttacked(false);
-    //console.log(`Recebeu:${battleObject!.atk} de dano`);
   }
   useEffect(() => {
     if (currentDeck.length > 0) {
@@ -70,7 +81,7 @@ export function Battle() {
     } else {
       //se nao
       window.alert("Você foi derrotado!");
-      navigate("/CardBattle/");
+      navigate("/CardBattle/battles/");
     }
     // action on update of movies
   }, [currentDeck]);
@@ -107,7 +118,16 @@ export function Battle() {
         </ImageContainer>
 
         <ImageContainer>
-          <img src={characterCurrentImg} className="character" />
+          <CharacterImage
+            src={characterCurrentImg}
+            onAnimationEnd={() => {
+              setPlayerHit(0);
+              setPlayerAttack(0);
+            }}
+            playerattack={playerAttack}
+            hit={playerHit}
+            className="character"
+          />
           {selectedCard && (
             <LifeBar hpamount={(100 * currentPlayerHp) / selectedCard.hp}>
               <div className="bar">
@@ -122,19 +142,22 @@ export function Battle() {
               })}
           </Deck>
 
-          {!attacked && (
-            <>
-              <button
+          {!attacked && selectedCard && (
+            <AttackOptions>
+              <AttackBtn
                 onClick={() => {
-                  reduceHp(30);
-                  setHit(1);
+                  reduceHp(selectedCard.atk);
                 }}
               >
                 Atk-1
-              </button>
-              <button onClick={() => reduceHp(10)}>Atk-2</button>
-              <button onClick={() => reduceHp(40)}>Atk-3</button>
-            </>
+              </AttackBtn>
+              <AttackBtn onClick={() => reduceHp(selectedCard.atk)}>
+                Atk-2
+              </AttackBtn>
+              <AttackBtn onClick={() => reduceHp(selectedCard.atk)}>
+                Atk-3
+              </AttackBtn>
+            </AttackOptions>
           )}
         </ImageContainer>
       </Container>

@@ -142,3 +142,79 @@ export const EnemyImage = styled.img<EnemyImageProps>`
     }
   }
 `;
+interface CharacterImageProps {
+  hit: number;
+  playerattack: number;
+}
+export const CharacterImage = styled.img<CharacterImageProps>`
+  ${(props) =>
+    props.hit <= 0
+      ? css`
+          //animation: MoveUpDown 4s cubic-bezier(0.62, 0.67, 0.67, 1.05) infinite;
+        `
+      : css`
+          animation: GetHit 0.2s cubic-bezier(0.62, 0.67, 0.67, 1.05) 1;
+          filter: grayscale(100%);
+        `}
+  ${(props) =>
+    props.playerattack > 0 &&
+    css`
+      animation: Attack 0.5s cubic-bezier(0.65, 0.22, 0.37, 1.01) 1;
+    `}
+  @keyframes GetHit {
+    0%,
+    100% {
+      transform: translate(-10%, -5%);
+    }
+    50% {
+      transform: translate(10%, -5%);
+    }
+  }
+  @keyframes Attack {
+    0% {
+      transform: translate(0%, -5%);
+    }
+    50% {
+      transform: translate(30%, -30%);
+    }
+    70% {
+      transform: translate(-50%, -5%);
+    }
+    100% {
+      transform: translate(0%, -5%);
+    }
+  }
+`;
+
+export const AttackOptions = styled.div`
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+`;
+export const AttackBtn = styled.button`
+  border: none;
+  border-radius: 50%;
+  padding: 2rem;
+
+  color: ${(props) => props.theme["gray-100"]};
+
+  background-color: ${(props) => props.theme["red-500"]};
+
+  box-sizing: border-box;
+
+  text-align: center;
+
+  border: 1px solid transparent;
+
+  &:disabled {
+    background-color: ${(props) => props.theme["gray-800"]};
+    cursor: not-allowed;
+  }
+  &:not(:disabled):hover {
+    transition: 0.2s background-color;
+    background-color: ${(props) => props.theme["red-300"]};
+    border: 1px solid ${(props) => props.theme["gray-800"]};
+    cursor: pointer;
+  }
+`;
