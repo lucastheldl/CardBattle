@@ -34,6 +34,7 @@ export const HeaderContainer = styled.nav`
       color: ${(props) => props.theme["red-300"]};
     }
     &:hover {
+      transition: 0.2s all;
       color: ${(props) => props.theme["red-300"]};
       span {
         color: ${(props) => props.theme["red-500"]};
