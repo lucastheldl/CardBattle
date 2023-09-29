@@ -34,6 +34,7 @@ export function Battle() {
   const [currentDeck, setCurrentDeck] = useState(cardsInDeck);
   const [hit, setHit] = useState(0);
   const [playerHit, setPlayerHit] = useState(0);
+  const [enemyAttack, setEnemyAttack] = useState(0);
   const [playerAttack, setPlayerAttack] = useState(0);
 
   async function reduceHp(atk: number) {
@@ -60,8 +61,10 @@ export function Battle() {
   }
 
   async function reducePlayerHp() {
+    setEnemyAttack(1);
+    await new Promise((resolve) => setTimeout(resolve, 500));
+    setPlayerHit(1);
     if (currentPlayerHp <= battleObject!.atk) {
-      setPlayerHit(1);
       setCurrentPlayerHp(0);
       await new Promise((resolve) => setTimeout(resolve, 1000));
       setCurrentDeck(
@@ -74,6 +77,8 @@ export function Battle() {
     setCurrentPlayerHp((prev) => (prev -= battleObject!.atk));
     changeAttacked(false);
   }
+
+  //update battle deck
   useEffect(() => {
     if (currentDeck.length > 0) {
       changeSelectedCard(null);
@@ -86,10 +91,12 @@ export function Battle() {
     // action on update of movies
   }, [currentDeck]);
 
+  //chenge game stage when start
   useEffect(() => {
     changeGameStage("selecting");
   }, []);
 
+  //update player info when start
   useEffect(() => {
     if (!selectedCard) {
       setCharacterCurrentImg("");
@@ -107,7 +114,11 @@ export function Battle() {
         <ImageContainer>
           <EnemyImage
             src={battleObject!.characterImg}
-            onAnimationEnd={() => setHit(0)}
+            onAnimationEnd={() => {
+              setHit(0);
+              setEnemyAttack(0);
+            }}
+            enemyattack={enemyAttack}
             hit={hit}
           />
           <LifeBar hpamount={(100 * currentHp) / battleObject!.hp}>
@@ -128,20 +139,6 @@ export function Battle() {
             hit={playerHit}
             className="character"
           />
-          {selectedCard && (
-            <LifeBar hpamount={(100 * currentPlayerHp) / selectedCard.hp}>
-              <div className="bar">
-                <p>{selectedCard.name}</p>
-              </div>
-            </LifeBar>
-          )}
-          <Deck gamestate={gameStage}>
-            {currentDeck &&
-              currentDeck.map((card, i) => {
-                return <Card {...card} key={`${card.id}-${i}`} />;
-              })}
-          </Deck>
-
           {!attacked && selectedCard && (
             <AttackOptions>
               <AttackBtn
@@ -159,6 +156,19 @@ export function Battle() {
               </AttackBtn>
             </AttackOptions>
           )}
+          {selectedCard && (
+            <LifeBar hpamount={(100 * currentPlayerHp) / selectedCard.hp}>
+              <div className="bar">
+                <p>{selectedCard.name}</p>
+              </div>
+            </LifeBar>
+          )}
+          <Deck gamestate={gameStage}>
+            {currentDeck &&
+              currentDeck.map((card, i) => {
+                return <Card {...card} key={`${card.id}-${i}`} />;
+              })}
+          </Deck>
         </ImageContainer>
       </Container>
     </BattleContainer>

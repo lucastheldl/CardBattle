@@ -105,6 +105,7 @@ export const LifeBar = styled.div<ContainerProps>`
 
 interface EnemyImageProps {
   hit: number;
+  enemyattack: number;
 }
 export const EnemyImage = styled.img<EnemyImageProps>`
   ${(props) =>
@@ -116,6 +117,12 @@ export const EnemyImage = styled.img<EnemyImageProps>`
           animation: GetHit 0.2s cubic-bezier(0.62, 0.67, 0.67, 1.05) 1;
           filter: grayscale(100%);
         `}
+
+  ${(props) =>
+    props.enemyattack > 0 &&
+    css`
+      animation: EnemyAttack 0.5s cubic-bezier(0.65, 0.22, 0.37, 1.01) 1;
+    `}
 
   width: 700px;
   position: absolute;
@@ -132,13 +139,18 @@ export const EnemyImage = styled.img<EnemyImageProps>`
       transform: translate(2%, -0%);
     }
   }
-  @keyframes GetHit {
-    0%,
-    100% {
-      transform: translate(-10%, -5%);
+  @keyframes EnemyAttack {
+    0% {
+      transform: translate(0%, -5%);
     }
     50% {
-      transform: translate(10%, -5%);
+      transform: translate(-30%, -30%);
+    }
+    70% {
+      transform: translate(50%, -5%);
+    }
+    100% {
+      transform: translate(0%, -5%);
     }
   }
 `;
@@ -198,15 +210,13 @@ export const AttackBtn = styled.button`
   padding: 2rem;
 
   color: ${(props) => props.theme["gray-100"]};
-
-  background-color: ${(props) => props.theme["red-500"]};
-
-  box-sizing: border-box;
-
   text-align: center;
 
+  background-color: ${(props) => props.theme["red-500"]};
   border: 1px solid transparent;
+  box-sizing: border-box;
 
+  transform: translatey(100px);
   &:disabled {
     background-color: ${(props) => props.theme["gray-800"]};
     cursor: not-allowed;
