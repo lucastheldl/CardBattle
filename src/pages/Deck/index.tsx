@@ -1,12 +1,11 @@
 import { DeckContainer } from "./styles";
-import { cardList } from "../../lib/cards";
 import { Card } from "../../components/Card";
 import { useContext, useEffect } from "react";
 import { CardContext } from "../../context/CardContext";
 import { GameContext } from "../../context/GameContext";
 
 export function Deck() {
-  const { cardsInDeck, changeSelectedCard } = useContext(CardContext);
+  const { cardsInDeck, changeSelectedCard, OwnCards } = useContext(CardContext);
   const { changeGameStage } = useContext(GameContext);
 
   useEffect(() => {
@@ -18,7 +17,7 @@ export function Deck() {
     <DeckContainer>
       <h1>Deck</h1>
       <section className="avaliableCards">
-        {cardList.map((card) => {
+        {OwnCards.map((card) => {
           return <Card {...card} key={card.id} />;
         })}
       </section>

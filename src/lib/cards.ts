@@ -9,6 +9,16 @@ import chaosDragonEnemy from "../assets//CaosDragon.png";
 import space from "../assets/c74e901922011b4516d02e7cff8cb45d.jpg";
 import mountain from "../assets/cba62536cf97f1a7441832d5b8bce18b.jpg";
 
+export type CardType = {
+  id: string;
+  name: string;
+  img: string;
+  characterImg: string;
+  hp: number;
+  def: number;
+  atk: number;
+};
+
 export const cardList = [
   {
     id: "1",

@@ -17,6 +17,7 @@ type CardContextType = {
   addCardToDeck: (card: Card) => void;
   removeCardFromDeck: (id: string) => void;
   changeSelectedCard: (card: Card | null) => void;
+  addOwnCard: (card: Card) => void;
 };
 type CardContextProviderProps = {
   children: ReactNode;
@@ -31,7 +32,6 @@ export function CardContextProvider({ children }: CardContextProviderProps) {
 
   function addCardToDeck(card: Card) {
     setCardsInDeck((prev) => [...prev, card]);
-    setOwnCards((prev) => [...prev, card]);
   }
   function removeCardFromDeck(id: string) {
     setCardsInDeck(cardsInDeck.filter((card) => card.id !== id));
@@ -39,6 +39,10 @@ export function CardContextProvider({ children }: CardContextProviderProps) {
 
   function changeSelectedCard(card: Card | null) {
     setSelectedCard(card);
+  }
+
+  function addOwnCard(card: Card) {
+    setOwnCards((prev) => [...prev, card]);
   }
 
   return (
@@ -50,6 +54,7 @@ export function CardContextProvider({ children }: CardContextProviderProps) {
         addCardToDeck,
         removeCardFromDeck,
         changeSelectedCard,
+        addOwnCard,
       }}
     >
       {children}
