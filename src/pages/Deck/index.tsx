@@ -5,7 +5,7 @@ import { CardContext } from "../../context/CardContext";
 import { GameContext } from "../../context/GameContext";
 
 export function Deck() {
-  const { cardsInDeck, changeSelectedCard, OwnCards, avaliableCards } =
+  const { cardsInDeck, changeSelectedCard, OwnCards /*, avaliableCards */ } =
     useContext(CardContext);
   const { changeGameStage } = useContext(GameContext);
 
@@ -18,7 +18,7 @@ export function Deck() {
     <DeckContainer>
       <h1>Deck</h1>
       <section className="avaliableCards">
-        {avaliableCards.map((card) => {
+        {OwnCards.map((card) => {
           return <Card {...card} key={card.id} />;
         })}
       </section>
