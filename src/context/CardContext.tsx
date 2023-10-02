@@ -37,7 +37,6 @@ export function CardContextProvider({ children }: CardContextProviderProps) {
 
   useEffect(() => {
     setavaliableCards(cards);
-    console.log(cards);
   }, [cards]);
 
   function addCardToDeck(card: Card) {

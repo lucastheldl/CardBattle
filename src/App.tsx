@@ -9,22 +9,25 @@ import { CardContextProvider } from "./context/CardContext";
 import { Footer } from "./components/Footer";
 import { GameContextProvider } from "./context/GameContext";
 import { ParallaxProvider } from "react-scroll-parallax";
+import { AuthContextProvider } from "./context/AuthContext";
 
 function App() {
   return (
     <ThemeProvider theme={defaultTheme}>
-      <GameContextProvider>
-        <CardContextProvider>
-          <ParallaxProvider>
-            <BrowserRouter>
-              <GlobalStyle />
-              <Header />
-              <Router />
-              <Footer />
-            </BrowserRouter>
-          </ParallaxProvider>
-        </CardContextProvider>
-      </GameContextProvider>
+      <AuthContextProvider>
+        <GameContextProvider>
+          <CardContextProvider>
+            <ParallaxProvider>
+              <BrowserRouter>
+                <GlobalStyle />
+                <Header />
+                <Router />
+                <Footer />
+              </BrowserRouter>
+            </ParallaxProvider>
+          </CardContextProvider>
+        </GameContextProvider>
+      </AuthContextProvider>
     </ThemeProvider>
   );
 }

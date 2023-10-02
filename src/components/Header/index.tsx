@@ -21,6 +21,12 @@ export function Header() {
             Deck
           </NavLink>
         </li>
+        <li>
+          <NavLink to="/CardBattle/auth/register">
+            <Inbox width={22} />
+            Register
+          </NavLink>
+        </li>
       </ul>
     </HeaderContainer>
   );
