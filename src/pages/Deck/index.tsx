@@ -5,7 +5,8 @@ import { CardContext } from "../../context/CardContext";
 import { GameContext } from "../../context/GameContext";
 
 export function Deck() {
-  const { cardsInDeck, changeSelectedCard, OwnCards } = useContext(CardContext);
+  const { cardsInDeck, changeSelectedCard, OwnCards, avaliableCards } =
+    useContext(CardContext);
   const { changeGameStage } = useContext(GameContext);
 
   useEffect(() => {
@@ -17,7 +18,7 @@ export function Deck() {
     <DeckContainer>
       <h1>Deck</h1>
       <section className="avaliableCards">
-        {OwnCards.map((card) => {
+        {avaliableCards.map((card) => {
           return <Card {...card} key={card.id} />;
         })}
       </section>

@@ -1,4 +1,5 @@
-import { ReactNode, createContext, useState } from "react";
+import { ReactNode, createContext, useEffect, useState } from "react";
+import { useFetchAllCards } from "../hooks/useFetchAllCards";
 
 interface Card {
   id: string;
@@ -13,6 +14,7 @@ interface Card {
 type CardContextType = {
   cardsInDeck: Card[];
   OwnCards: Card[];
+  avaliableCards: Card[];
   selectedCard: Card | null;
   addCardToDeck: (card: Card) => void;
   removeCardFromDeck: (id: string) => void;
@@ -27,8 +29,16 @@ export const CardContext = createContext({} as CardContextType);
 
 export function CardContextProvider({ children }: CardContextProviderProps) {
   const [cardsInDeck, setCardsInDeck] = useState<Card[]>([]);
+  const [avaliableCards, setavaliableCards] = useState<Card[]>([]);
   const [OwnCards, setOwnCards] = useState<Card[]>([]);
   const [selectedCard, setSelectedCard] = useState<Card | null>(null);
+
+  const { cards } = useFetchAllCards();
+
+  useEffect(() => {
+    setavaliableCards(cards);
+    console.log(cards);
+  }, [cards]);
 
   function addCardToDeck(card: Card) {
     setCardsInDeck((prev) => [...prev, card]);
@@ -50,6 +60,7 @@ export function CardContextProvider({ children }: CardContextProviderProps) {
       value={{
         cardsInDeck,
         OwnCards,
+        avaliableCards,
         selectedCard,
         addCardToDeck,
         removeCardFromDeck,
