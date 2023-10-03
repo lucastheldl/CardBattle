@@ -5,6 +5,7 @@ export const DeckContainer = styled.main`
   flex-direction: column;
   align-items: center;
   gap: 1rem;
+  position: relative;
 
   width: 100%;
   max-width: 1120px;
@@ -21,10 +22,15 @@ export const DeckContainer = styled.main`
     border-radius: 6px;
   }
   .avaliableCards {
+    margin-bottom: 10rem;
     height: 300px;
     width: 100%;
   }
   .deck {
+    position: fixed;
+    bottom: 0.5rem;
+
+    border: 2px solid ${(props) => props.theme["gray-900"]};
     height: 300px;
     width: 550px;
   }

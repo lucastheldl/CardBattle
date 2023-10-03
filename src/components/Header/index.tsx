@@ -30,7 +30,7 @@ export function Header() {
               <NavLink to="/CardBattle/auth/login">Entrar</NavLink>
             </li>
             <li>
-              <NavLink to="/CardBattle/auth/register">Register</NavLink>
+              <NavLink to="/CardBattle/auth/register">Cadastrar</NavLink>
             </li>
           </>
         ) : (

@@ -6,6 +6,7 @@ import { Battle } from "./pages/Battle";
 import { Register } from "./pages/auth/Register";
 import { AuthContext } from "./context/AuthContext";
 import { useContext } from "react";
+import { Login } from "./pages/auth/Login";
 
 export function Router() {
   const { user } = useContext(AuthContext);
@@ -22,6 +23,10 @@ export function Router() {
       <Route
         path="/CardBattle/auth/register"
         element={!user ? <Register /> : <Navigate to="/CardBattle/" />}
+      />
+      <Route
+        path="/CardBattle/auth/login"
+        element={!user ? <Login /> : <Navigate to="/CardBattle/" />}
       />
     </Routes>
   );

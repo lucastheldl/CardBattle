@@ -1,10 +1,17 @@
 import { FormEvent, useState } from "react";
-import { RegisterWrapper } from "./styles";
+import {
+  RegisterBtn,
+  RegisterForm,
+  RegisterInput,
+  RegisterWrapper,
+} from "./styles";
 import signUp from "../../../firebase/auth/signUp";
+import { NavLink } from "react-router-dom";
 
 export function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
 
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
@@ -19,12 +26,13 @@ export function Register() {
   }
   return (
     <RegisterWrapper>
-      <form onSubmit={handleSubmit}>
+      <h2>Cadastre-se</h2>
+      <RegisterForm onSubmit={handleSubmit}>
         <label>Username:</label>
-        <input type="text" placeholder="Escolha um nome de usuario" />
+        <RegisterInput type="text" placeholder="Escolha um nome de usuario" />
 
         <label htmlFor="email">Email:</label>
-        <input
+        <RegisterInput
           type="email"
           placeholder="email@email.com"
           onChange={(e) => setEmail(e.target.value)}
@@ -33,18 +41,31 @@ export function Register() {
           required
         />
 
-        <label htmlFor="password">Password:</label>
-        <input
+        <label htmlFor="password">Senha:</label>
+        <RegisterInput
           type="password"
-          placeholder="escolha uma senha"
+          placeholder="Escolha uma senha"
           onChange={(e) => setPassword(e.target.value)}
           value={password}
           name="password"
           required
         />
+        <label htmlFor="confirmPassword">Confirmar senha:</label>
+        <RegisterInput
+          type="password"
+          placeholder="Confirme sua senha"
+          onChange={(e) => setConfirmPassword(e.target.value)}
+          value={confirmPassword}
+          name="confirmPassword"
+          required
+        />
 
-        <button type="submit">Registrar</button>
-      </form>
+        <RegisterBtn type="submit">Cadastrar</RegisterBtn>
+        <p>
+          Já tem uma conta?{" "}
+          <NavLink to={"/CardBattle/auth/login"}>Entrar</NavLink>
+        </p>
+      </RegisterForm>
     </RegisterWrapper>
   );
 }

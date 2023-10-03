@@ -16,7 +16,7 @@ export function Deck() {
 
   return (
     <DeckContainer>
-      <h1>Deck</h1>
+      <h1>Montar Deck</h1>
       <section className="avaliableCards">
         {OwnCards.map((card) => {
           return <Card {...card} key={card.id} />;
