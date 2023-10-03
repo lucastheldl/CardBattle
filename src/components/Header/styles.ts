@@ -20,12 +20,18 @@ export const HeaderContainer = styled.nav`
     list-style: none;
   }
 
-  a {
+  a,
+  button {
     display: flex;
     gap: 10px;
     align-items: center;
     text-decoration: none;
     color: ${(props) => props.theme["red-500"]};
+    background: none;
+    border: none;
+
+    font-weight: bold;
+    font-size: 1.5rem;
 
     padding: 1rem;
     border-radius: 6px;
@@ -36,6 +42,7 @@ export const HeaderContainer = styled.nav`
     &:hover {
       transition: 0.2s all;
       color: ${(props) => props.theme["red-300"]};
+      cursor: pointer;
       span {
         color: ${(props) => props.theme["red-500"]};
       }

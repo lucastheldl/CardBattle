@@ -8,12 +8,15 @@ import { AuthContext } from "./context/AuthContext";
 import { useContext } from "react";
 
 export function Router() {
-  const user = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
 
   return (
     <Routes>
       <Route path="/CardBattle/" element={<Home />} />
-      <Route path="/CardBattle/deck" element={<Deck />} />
+      <Route
+        path="/CardBattle/deck"
+        element={!user ? <Register /> : <Deck />}
+      />
       <Route path="/CardBattle/battles" element={<Battles />} />
       <Route path="/CardBattle/battles/:id" element={<Battle />} />
       <Route

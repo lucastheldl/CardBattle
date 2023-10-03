@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { CardContext } from "../../context/CardContext";
 import { BattleCardContainer } from "./styles";
 import { NavLink } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
 
 interface BattleCardProps {
   id: string;
@@ -10,6 +11,8 @@ interface BattleCardProps {
 
 export function BattleCard({ id, characterImage }: BattleCardProps) {
   const { cardsInDeck } = useContext(CardContext);
+
+  const { user } = useContext(AuthContext);
   return (
     <BattleCardContainer>
       <img src={characterImage} />
@@ -17,7 +20,15 @@ export function BattleCard({ id, characterImage }: BattleCardProps) {
       {cardsInDeck.length > 0 ? (
         <NavLink to={`/CardBattle/battles/${id}`}>Lutar</NavLink>
       ) : (
-        <NavLink to={`/CardBattle/deck/`}>Montar Deck</NavLink>
+        <>
+          {!user ? (
+            <NavLink to={`/CardBattle/auth/register`}>
+              Registre-se para lutar
+            </NavLink>
+          ) : (
+            <NavLink to={`/CardBattle/deck/`}>Montar Deck</NavLink>
+          )}
+        </>
       )}
     </BattleCardContainer>
   );
