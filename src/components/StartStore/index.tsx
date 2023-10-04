@@ -13,15 +13,35 @@ import { useContext } from "react";
 import { CardContext } from "../../context/CardContext";
 //type
 import { CardType } from "../../lib/cards";
+import { arrayUnion, doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
+import { db } from "../../firebase/config";
+import { AuthContext } from "../../context/AuthContext";
 
 export function StartStore() {
   const { OwnCards, addOwnCard, avaliableCards } = useContext(CardContext);
+  const { user } = useContext(AuthContext);
   const parallax = useParallax({
     translateY: [-30, 35],
   });
 
-  function handleBuy(card: CardType) {
-    addOwnCard(card);
+  async function handleBuy(card: CardType) {
+    //addOwnCard(card);
+    if (!user) {
+      return;
+    }
+    const userDocRef = doc(db, "users", user!.uid);
+
+    const userDocSnapshot = await getDoc(userDocRef);
+
+    if (userDocSnapshot.exists()) {
+      await updateDoc(userDocRef, {
+        ownedCards: arrayUnion(card.id),
+      });
+    } else {
+      await setDoc(userDocRef, {
+        ownedCards: [card.id],
+      });
+    }
   }
 
   return (

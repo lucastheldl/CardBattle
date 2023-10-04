@@ -1,5 +1,12 @@
-import { ReactNode, createContext, useEffect, useState } from "react";
+import {
+  ReactNode,
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 import { useFetchAllCards } from "../hooks/useFetchAllCards";
+import { useGetOwnedCards } from "../hooks/useGetOwnedCards";
 
 interface Card {
   id: string;
@@ -19,7 +26,7 @@ type CardContextType = {
   addCardToDeck: (card: Card) => void;
   removeCardFromDeck: (id: string) => void;
   changeSelectedCard: (card: Card | null) => void;
-  addOwnCard: (card: Card) => void;
+  /* addOwnCard: (card: Card) => void; */
 };
 type CardContextProviderProps = {
   children: ReactNode;
@@ -32,12 +39,17 @@ export function CardContextProvider({ children }: CardContextProviderProps) {
   const [avaliableCards, setavaliableCards] = useState<Card[]>([]);
   const [OwnCards, setOwnCards] = useState<Card[]>([]);
   const [selectedCard, setSelectedCard] = useState<Card | null>(null);
-
   const { cards } = useFetchAllCards();
+
+  const { ownedCards } = useGetOwnedCards();
 
   useEffect(() => {
     setavaliableCards(cards);
   }, [cards]);
+
+  useEffect(() => {
+    setOwnCards(ownedCards);
+  }, [ownedCards]);
 
   function addCardToDeck(card: Card) {
     setCardsInDeck((prev) => [...prev, card]);
@@ -50,9 +62,9 @@ export function CardContextProvider({ children }: CardContextProviderProps) {
     setSelectedCard(card);
   }
 
-  function addOwnCard(card: Card) {
+  /*function addOwnCard(card: Card) {
     setOwnCards((prev) => [...prev, card]);
-  }
+  }*/
 
   return (
     <CardContext.Provider
@@ -64,7 +76,7 @@ export function CardContextProvider({ children }: CardContextProviderProps) {
         addCardToDeck,
         removeCardFromDeck,
         changeSelectedCard,
-        addOwnCard,
+        /* addOwnCard, */
       }}
     >
       {children}
