@@ -1,4 +1,10 @@
-import { ReactNode, createContext, useEffect, useState } from "react";
+import {
+  ReactNode,
+  createContext,
+  useCallback,
+  useEffect,
+  useState,
+} from "react";
 import { useFetchAllCards } from "../hooks/useFetchAllCards";
 import { useGetOwnedCards } from "../hooks/useGetOwnedCards";
 import { CardType } from "../lib/cards";
@@ -42,10 +48,13 @@ export function CardContextProvider({ children }: CardContextProviderProps) {
   function removeCardFromDeck(id: string) {
     setCardsInDeck(cardsInDeck.filter((card) => card.id !== id));
   }
-
-  function changeSelectedCard(card: CardType | null) {
+  const changeSelectedCard = useCallback((card: CardType | null) => {
     setSelectedCard(card);
-  }
+  }, []);
+
+  /* function changeSelectedCard(card: CardType | null) {
+    setSelectedCard(card);
+  } */
 
   //function updateOwnedCards() {}
 

@@ -1,4 +1,4 @@
-import { ReactNode, createContext, useState } from "react";
+import { ReactNode, createContext, useCallback, useState } from "react";
 
 type GameStage = "display" | "deck" | "selecting" | "battle";
 type DeckContextType = {
@@ -17,9 +17,12 @@ export function GameContextProvider({ children }: DeckContextProviderProps) {
   const [gameStage, setGameStage] = useState<GameStage>("deck");
   const [attacked, setAttacked] = useState(false);
 
-  function changeGameStage(stage: GameStage) {
+  const changeGameStage = useCallback((newStage: GameStage) => {
+    setGameStage(newStage);
+  }, []);
+  /* function changeGameStage(stage: GameStage) {
     setGameStage(stage);
-  }
+  } */
   function changeAttacked(status: boolean) {
     setAttacked(status);
   }

@@ -89,12 +89,12 @@ export function Battle() {
       navigate("/CardBattle/battles/");
     }
     // action on update of movies
-  }, [currentDeck]);
+  }, [currentDeck, changeGameStage, navigate, changeSelectedCard]);
 
   //change game stage when start
   useEffect(() => {
     changeGameStage("selecting");
-  }, []);
+  }, [changeGameStage]);
 
   //update player info when start
   useEffect(() => {
@@ -139,6 +139,7 @@ export function Battle() {
             hit={playerHit}
             className="character"
           />
+          {/*Handle card attack options */}
           {!attacked && selectedCard && (
             <AttackOptions>
               <AttackBtn
@@ -146,16 +147,18 @@ export function Battle() {
                   reduceHp(selectedCard.atk);
                 }}
               >
-                Atk-1
+                Ataque básico
               </AttackBtn>
-              <AttackBtn onClick={() => reduceHp(selectedCard.atk)}>
-                Atk-2
-              </AttackBtn>
-              <AttackBtn onClick={() => reduceHp(selectedCard.atk)}>
-                Atk-3
-              </AttackBtn>
+              {selectedCard.moves.map((c) => {
+                return (
+                  <AttackBtn onClick={() => reduceHp(c.damage)}>
+                    {c.name}
+                  </AttackBtn>
+                );
+              })}
             </AttackOptions>
           )}
+          {/*Handle card Lifebar */}
           {selectedCard && (
             <LifeBar hpamount={(100 * currentPlayerHp) / selectedCard.hp}>
               <div className="bar">
