@@ -9,21 +9,12 @@ import {
 import { useContext, useEffect, useState } from "react";
 import { db } from "../firebase/config";
 import { AuthContext } from "../context/AuthContext";
-
-interface Card {
-  id: string;
-  name: string;
-  img: string;
-  characterImg: string;
-  def: number;
-  atk: number;
-  hp: number;
-}
+import { CardType } from "../lib/cards";
 
 export function useGetOwnedCards() {
   const { user } = useContext(AuthContext);
   const [loading, setLoading] = useState<boolean>(true);
-  const [ownedCards, setOwnedCards] = useState<Card[]>([]);
+  const [ownedCards, setOwnedCards] = useState<CardType[]>([]);
 
   useEffect(() => {
     if (!user) {
@@ -53,7 +44,7 @@ export function useGetOwnedCards() {
             return {
               id: doc.id,
               ...cardData,
-            } as Card;
+            } as CardType;
           });
           console.log(cardsData);
           setOwnedCards(cardsData);

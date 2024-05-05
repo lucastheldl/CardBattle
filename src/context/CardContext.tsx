@@ -1,31 +1,16 @@
-import {
-  ReactNode,
-  createContext,
-  useContext,
-  useEffect,
-  useState,
-} from "react";
+import { ReactNode, createContext, useEffect, useState } from "react";
 import { useFetchAllCards } from "../hooks/useFetchAllCards";
 import { useGetOwnedCards } from "../hooks/useGetOwnedCards";
-
-interface Card {
-  id: string;
-  name: string;
-  img: string;
-  characterImg: string;
-  def: number;
-  atk: number;
-  hp: number;
-}
+import { CardType } from "../lib/cards";
 
 type CardContextType = {
-  cardsInDeck: Card[];
-  OwnCards: Card[];
-  avaliableCards: Card[];
-  selectedCard: Card | null;
-  addCardToDeck: (card: Card) => void;
+  cardsInDeck: CardType[];
+  OwnCards: CardType[];
+  avaliableCards: CardType[];
+  selectedCard: CardType | null;
+  addCardToDeck: (card: CardType) => void;
   removeCardFromDeck: (id: string) => void;
-  changeSelectedCard: (card: Card | null) => void;
+  changeSelectedCard: (card: CardType | null) => void;
   /* addOwnCard: (card: Card) => void; */
 };
 type CardContextProviderProps = {
@@ -35,10 +20,10 @@ type CardContextProviderProps = {
 export const CardContext = createContext({} as CardContextType);
 
 export function CardContextProvider({ children }: CardContextProviderProps) {
-  const [cardsInDeck, setCardsInDeck] = useState<Card[]>([]);
-  const [avaliableCards, setavaliableCards] = useState<Card[]>([]);
-  const [OwnCards, setOwnCards] = useState<Card[]>([]);
-  const [selectedCard, setSelectedCard] = useState<Card | null>(null);
+  const [cardsInDeck, setCardsInDeck] = useState<CardType[]>([]);
+  const [avaliableCards, setavaliableCards] = useState<CardType[]>([]);
+  const [OwnCards, setOwnCards] = useState<CardType[]>([]);
+  const [selectedCard, setSelectedCard] = useState<CardType | null>(null);
   const { cards } = useFetchAllCards();
 
   const { ownedCards } = useGetOwnedCards();
@@ -51,20 +36,18 @@ export function CardContextProvider({ children }: CardContextProviderProps) {
     setOwnCards(ownedCards);
   }, [ownedCards]);
 
-  function addCardToDeck(card: Card) {
+  function addCardToDeck(card: CardType) {
     setCardsInDeck((prev) => [...prev, card]);
   }
   function removeCardFromDeck(id: string) {
     setCardsInDeck(cardsInDeck.filter((card) => card.id !== id));
   }
 
-  function changeSelectedCard(card: Card | null) {
+  function changeSelectedCard(card: CardType | null) {
     setSelectedCard(card);
   }
 
-  /*function addOwnCard(card: Card) {
-    setOwnCards((prev) => [...prev, card]);
-  }*/
+  //function updateOwnedCards() {}
 
   return (
     <CardContext.Provider

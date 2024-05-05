@@ -14,9 +14,11 @@ export type CardType = {
   name: string;
   img: string;
   characterImg: string;
-  hp: number;
   def: number;
   atk: number;
+  hp: number;
+  rarity: string;
+  moves: { name: string; damage: number; cooldown: number }[];
 };
 
 export const cardList = [

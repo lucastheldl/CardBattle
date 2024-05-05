@@ -91,7 +91,7 @@ export function Battle() {
     // action on update of movies
   }, [currentDeck]);
 
-  //chenge game stage when start
+  //change game stage when start
   useEffect(() => {
     changeGameStage("selecting");
   }, []);

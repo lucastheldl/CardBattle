@@ -18,7 +18,7 @@ import { db } from "../../firebase/config";
 import { AuthContext } from "../../context/AuthContext";
 
 export function StartStore() {
-  const { OwnCards, addOwnCard, avaliableCards } = useContext(CardContext);
+  const { OwnCards, avaliableCards } = useContext(CardContext);
   const { user } = useContext(AuthContext);
   const parallax = useParallax({
     translateY: [-30, 35],

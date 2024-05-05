@@ -3,17 +3,9 @@ import { CardContainer, CardImageArea, CardInfoArea } from "./styles";
 import { GameContext } from "../../context/GameContext";
 import { CardContext } from "../../context/CardContext";
 
-interface CardProps {
-  id: string;
-  name: string;
-  img: string;
-  characterImg: string;
-  def: number;
-  atk: number;
-  hp: number;
-}
+import { CardType } from "../../lib/cards";
 
-export function Card(props: CardProps) {
+export function Card(props: CardType) {
   const { cardsInDeck, addCardToDeck, removeCardFromDeck, changeSelectedCard } =
     useContext(CardContext);
   const { gameStage, changeGameStage, changeAttacked } =

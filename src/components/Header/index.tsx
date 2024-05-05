@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 import { HeaderContainer } from "./styles";
-import { Swords, Inbox } from "lucide-react";
+import { Swords, Inbox, ShoppingBag } from "lucide-react";
 import { AuthContext } from "../../context/AuthContext";
 import { useContext } from "react";
 
@@ -24,6 +24,7 @@ export function Header() {
             Deck
           </NavLink>
         </li>
+
         {!user ? (
           <>
             <li>
@@ -34,9 +35,17 @@ export function Header() {
             </li>
           </>
         ) : (
-          <li>
-            <button onClick={logOut}>Sair</button>
-          </li>
+          <>
+            <li>
+              <NavLink to="/CardBattle/auth/shop">
+                <ShoppingBag width={22} />
+                Loja
+              </NavLink>
+            </li>
+            <li>
+              <button onClick={logOut}>Sair</button>
+            </li>
+          </>
         )}
       </ul>
     </HeaderContainer>

@@ -1,19 +1,10 @@
 import { useEffect, useState } from "react";
 import { db } from "../firebase/config";
 import { collection, getDocs } from "firebase/firestore";
-
-interface Card {
-  id: string;
-  name: string;
-  img: string;
-  characterImg: string;
-  def: number;
-  atk: number;
-  hp: number;
-}
+import { CardType } from "../lib/cards";
 
 export function useFetchAllCards() {
-  const [cards, setCards] = useState<Card[]>([]);
+  const [cards, setCards] = useState<CardType[]>([]);
 
   useEffect(() => {
     async function getCards() {
@@ -24,7 +15,7 @@ export function useFetchAllCards() {
         return {
           id: doc.id,
           ...cardData,
-        } as Card;
+        } as CardType;
       });
       setCards(cardsData);
     }
