@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
-export const BattleCardContainer = styled.div`
+interface StatusProps {
+  rarity: "COMMON" | "RARE" | "LEGENDARY";
+}
+
+export const BattleCardContainer = styled.div<StatusProps>`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -12,7 +16,21 @@ export const BattleCardContainer = styled.div`
   height: 200px;
   max-width: 200px;
 
-  border: 1px solid ${(props) => props.theme["red-500"]};
+  border: ${(props) => {
+    switch (props.rarity) {
+      case "COMMON":
+        return `1px solid ${props.theme["red-500"]}`;
+      case "RARE":
+        return `1px solid ${props.theme["gold-500"]}`;
+      case "LEGENDARY":
+        return `1px solid ${props.theme["red-500"]}`;
+    }
+  }};
+  ${(props) =>
+    props.rarity === "LEGENDARY" &&
+    `
+    animation: rgbAnimation 5s ease-in-out infinite;
+  `}
 
   border-radius: 6px;
   padding: 0.5rem;
@@ -53,6 +71,20 @@ export const BattleCardContainer = styled.div`
       background-color: ${(props) => props.theme["red-300"]};
       border: 1px solid ${(props) => props.theme["gray-800"]};
       cursor: pointer;
+    }
+  }
+  @keyframes rgbAnimation {
+    0% {
+      border-color: red;
+    }
+    33% {
+      border-color: green;
+    }
+    66% {
+      border-color: blue;
+    }
+    100% {
+      border-color: red;
     }
   }
 `;

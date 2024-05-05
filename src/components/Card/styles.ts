@@ -1,13 +1,31 @@
 import styled from "styled-components";
 
-export const CardContainer = styled.button`
+interface StatusProps {
+  rarity: "COMMON" | "RARE" | "LEGENDARY";
+}
+
+export const CardContainer = styled.button<StatusProps>`
   display: flex;
   flex-direction: column;
 
   height: 270px;
 
   background-color: ${(props) => props.theme["gray-900"]};
-  border: 1px solid ${(props) => props.theme["red-500"]};
+  border: ${(props) => {
+    switch (props.rarity) {
+      case "COMMON":
+        return `1px solid ${props.theme["red-500"]}`;
+      case "RARE":
+        return `1px solid ${props.theme["gold-500"]}`;
+      case "LEGENDARY":
+        return `1px solid ${props.theme["red-500"]}`;
+    }
+  }};
+  ${(props) =>
+    props.rarity === "LEGENDARY" &&
+    `
+    animation: rgbAnimation 5s ease-in-out infinite;
+  `}
 
   border-radius: 6px;
   padding: 0.5rem;
@@ -17,6 +35,21 @@ export const CardContainer = styled.button`
   transition: 0.2s ease-in-out;
   &:hover {
     transform: scale(1.5);
+  }
+
+  @keyframes rgbAnimation {
+    0% {
+      border-color: red;
+    }
+    33% {
+      border-color: green;
+    }
+    66% {
+      border-color: blue;
+    }
+    100% {
+      border-color: red;
+    }
   }
 `;
 export const CardImageArea = styled.div`

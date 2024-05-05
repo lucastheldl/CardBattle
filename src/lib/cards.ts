@@ -17,7 +17,7 @@ export type CardType = {
   def: number;
   atk: number;
   hp: number;
-  rarity: string;
+  rarity: "COMMON" | "RARE" | "LEGENDARY";
   moves: { name: string; damage: number; cooldown: number }[];
 };
 
