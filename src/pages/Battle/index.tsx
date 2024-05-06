@@ -123,6 +123,7 @@ export function Battle() {
             className="enemy"
           />
           <LifeBar hpamount={(100 * currentHp) / battleObject!.hp}>
+            <p>{battleObject!.name}</p>
             <div className="bar"></div>
           </LifeBar>
         </ImageContainer>

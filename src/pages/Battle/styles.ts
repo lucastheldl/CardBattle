@@ -96,6 +96,15 @@ export const LifeBar = styled.div<ContainerProps>`
   overflow: hidden;
 
   background-color: ${(props) => props.theme["gray-900"]};
+  p {
+    font-weight: bold;
+    color: ${(props) => props.theme["gray-100"]};
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
   .bar {
     display: flex;
     justify-content: center;
