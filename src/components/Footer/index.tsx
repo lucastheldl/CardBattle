@@ -11,6 +11,7 @@ export function Footer() {
         <LinkedinIcon width={26} />
         Linkedin
       </a>
+      <p>© All illustrations and designs belong to TellarHeaven</p>
     </FooterContainer>
   );
 }

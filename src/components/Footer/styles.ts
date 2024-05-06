@@ -2,7 +2,8 @@ import styled from "styled-components";
 
 export const FooterContainer = styled.footer`
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 
   padding: 2rem;
 
@@ -32,5 +33,8 @@ export const FooterContainer = styled.footer`
       transition: 0.2s all;
       color: ${(props) => props.theme["red-300"]};
     }
+  }
+  p {
+    color: ${(props) => props.theme["red-500"]};
   }
 `;
