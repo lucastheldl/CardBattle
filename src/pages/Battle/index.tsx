@@ -151,7 +151,10 @@ export function Battle() {
               </AttackBtn>
               {selectedCard.moves.map((c) => {
                 return (
-                  <AttackBtn onClick={() => reduceHp(c.damage)}>
+                  <AttackBtn
+                    onClick={() => reduceHp(c.damage)}
+                    disabled={c.cooldown > 0}
+                  >
                     {c.name}
                   </AttackBtn>
                 );
