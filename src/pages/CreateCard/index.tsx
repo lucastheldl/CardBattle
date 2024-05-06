@@ -172,7 +172,7 @@ export function CreateCard() {
           required
         />
 
-        <RegisterBtn type="submit">Criar</RegisterBtn>
+        <RegisterBtn type="submit">Criar carta</RegisterBtn>
       </RegisterForm>
     </RegisterWrapper>
   );

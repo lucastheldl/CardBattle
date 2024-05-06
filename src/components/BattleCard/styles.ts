@@ -20,7 +20,7 @@ export const BattleCardContainer = styled.div`
   overflow: hidden;
 
   img {
-    width: 100%;
+    width: 130%;
     position: absolute;
     object-fit: cover;
     top: 50%;
