@@ -120,11 +120,10 @@ export function Battle() {
             }}
             enemyattack={enemyAttack}
             hit={hit}
+            className="enemy"
           />
           <LifeBar hpamount={(100 * currentHp) / battleObject!.hp}>
-            <div className="bar">
-              <p>{battleObject!.name}</p>
-            </div>
+            <div className="bar"></div>
           </LifeBar>
         </ImageContainer>
 

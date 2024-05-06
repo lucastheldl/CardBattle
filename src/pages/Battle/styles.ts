@@ -32,9 +32,17 @@ export const Container = styled.div`
   margin: 0 auto;
 
   .character {
-    width: 900px;
+    width: 600px;
     position: absolute;
-    top: -300px;
+    top: -100px;
+
+    z-index: -1;
+  }
+
+  .enemy {
+    width: 600px;
+    position: absolute;
+    top: -150px;
 
     z-index: -1;
   }
@@ -206,8 +214,8 @@ export const AttackOptions = styled.div`
 `;
 export const AttackBtn = styled.button`
   border: none;
-  border-radius: 50%;
-  padding: 2rem;
+  border-radius: 50px;
+  padding: 1rem;
 
   color: ${(props) => props.theme["gray-100"]};
   text-align: center;
