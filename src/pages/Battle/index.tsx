@@ -21,6 +21,7 @@ import { CardContext } from "../../context/CardContext";
 interface Moves {
   name: string;
   cooldown: number;
+  defauldCooldown: number;
   damage: number;
 }
 
@@ -119,7 +120,9 @@ export function Battle() {
     }
     setCurrentPlayerHp(selectedCard.hp);
     setCharacterCurrentImg(selectedCard.characterImg);
-    setCurrentMoves(selectedCard.moves);
+    setCurrentMoves(
+      selectedCard.moves.map((m) => ({ ...m, defauldCooldown: m.cooldown }))
+    );
   }, [selectedCard]);
 
   return (
@@ -162,8 +165,10 @@ export function Battle() {
                 onClick={() => {
                   reduceHp(selectedCard.atk);
                 }}
+                cooldown={0}
               >
                 Ataque básico
+                <div className="slider" />
               </AttackBtn>
               {currentMoves.map((c) => {
                 return (
@@ -171,8 +176,10 @@ export function Battle() {
                     onClick={() => reduceHp(c.damage)}
                     disabled={c.cooldown > 0}
                     key={c.name}
+                    cooldown={(c.cooldown * 100) / c.defauldCooldown}
                   >
                     {c.name}
+                    <div className="slider" />
                   </AttackBtn>
                 );
               })}

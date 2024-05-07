@@ -112,11 +112,6 @@ export const LifeBar = styled.div<ContainerProps>`
     width: ${(props) => props.hpamount}%;
     height: 100%;
     background-color: ${(props) => props.theme["red-500"]};
-
-    p {
-      font-weight: bold;
-      color: ${(props) => props.theme["gray-100"]};
-    }
   }
 `;
 
@@ -221,7 +216,11 @@ export const AttackOptions = styled.div`
   align-items: center;
   justify-content: center;
 `;
-export const AttackBtn = styled.button`
+interface AttackBtnProps {
+  cooldown: number;
+}
+export const AttackBtn = styled.button<AttackBtnProps>`
+  position: relative;
   border: none;
   border-radius: 50px;
   padding: 1rem;
@@ -234,8 +233,21 @@ export const AttackBtn = styled.button`
   box-sizing: border-box;
 
   transform: translatey(100px);
-  &:disabled {
+  overflow: hidden;
+  .slider {
     background-color: ${(props) => props.theme["gray-800"]};
+    border-left: 1px solid
+      ${(props) =>
+        props.cooldown > 0 ? props.theme["gray-900"] : props.theme["red-500"]};
+    width: ${(props) => props.cooldown}%;
+    position: absolute;
+    top: 0;
+    right: 0%;
+    height: 100%;
+    z-index: -1;
+  }
+  &:disabled {
+    border: 1px solid ${(props) => props.theme["gray-800"]};
     cursor: not-allowed;
   }
   &:not(:disabled):hover {
