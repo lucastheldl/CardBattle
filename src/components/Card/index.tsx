@@ -1,5 +1,10 @@
 import { useContext } from "react";
-import { CardContainer, CardImageArea, CardInfoArea } from "./styles";
+import {
+  CardContainer,
+  CardDescription,
+  CardImageArea,
+  CardInfoArea,
+} from "./styles";
 import { GameContext } from "../../context/GameContext";
 import { CardContext } from "../../context/CardContext";
 
@@ -50,6 +55,16 @@ export function Card(props: CardType) {
       <CardInfoArea>
         <strong>{props.name}</strong>
       </CardInfoArea>
+      <CardDescription>
+        {props.moves &&
+          props.moves.map((m) => {
+            return (
+              <p key={m.name}>
+                ✨{m.name} | DMG:{m.damage}
+              </p>
+            );
+          })}
+      </CardDescription>
     </CardContainer>
   );
 }
