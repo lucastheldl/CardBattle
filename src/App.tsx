@@ -10,25 +10,37 @@ import { Footer } from "./components/Footer";
 import { GameContextProvider } from "./context/GameContext";
 import { ParallaxProvider } from "react-scroll-parallax";
 import { AuthContextProvider } from "./context/AuthContext";
+import { StyleSheetManager } from "styled-components";
+import isPropValid from "@emotion/is-prop-valid";
 
 function App() {
+  function shouldForwardProp(propName, target) {
+    if (typeof target === "string") {
+      // For HTML elements, forward the prop if it is a valid HTML attribute
+      return isPropValid(propName);
+    }
+    // For other elements, forward all props
+    return true;
+  }
   return (
-    <ThemeProvider theme={defaultTheme}>
-      <AuthContextProvider>
-        <GameContextProvider>
-          <CardContextProvider>
-            <ParallaxProvider>
-              <BrowserRouter>
-                <GlobalStyle />
-                <Header />
-                <Router />
-                <Footer />
-              </BrowserRouter>
-            </ParallaxProvider>
-          </CardContextProvider>
-        </GameContextProvider>
-      </AuthContextProvider>
-    </ThemeProvider>
+    <StyleSheetManager shouldForwardProp={shouldForwardProp}>
+      <ThemeProvider theme={defaultTheme}>
+        <AuthContextProvider>
+          <GameContextProvider>
+            <CardContextProvider>
+              <ParallaxProvider>
+                <BrowserRouter>
+                  <GlobalStyle />
+                  <Header />
+                  <Router />
+                  <Footer />
+                </BrowserRouter>
+              </ParallaxProvider>
+            </CardContextProvider>
+          </GameContextProvider>
+        </AuthContextProvider>
+      </ThemeProvider>
+    </StyleSheetManager>
   );
 }
 
