@@ -18,6 +18,12 @@ import { Card } from "../../components/Card";
 import { GameContext } from "../../context/GameContext";
 import { CardContext } from "../../context/CardContext";
 
+interface Moves {
+  name: string;
+  cooldown: number;
+  damage: number;
+}
+
 export function Battle() {
   const { id } = useParams();
   const { cardsInDeck, selectedCard, changeSelectedCard } =
@@ -30,6 +36,7 @@ export function Battle() {
 
   const [currentHp, setCurrentHp] = useState(battleObject!.hp);
   const [currentPlayerHp, setCurrentPlayerHp] = useState(0);
+  const [currentMoves, setCurrentMoves] = useState<Moves[] | []>([]);
   const [characterCurrentImg, setCharacterCurrentImg] = useState("");
   const [currentDeck, setCurrentDeck] = useState(cardsInDeck);
   const [hit, setHit] = useState(0);
@@ -37,6 +44,7 @@ export function Battle() {
   const [enemyAttack, setEnemyAttack] = useState(0);
   const [playerAttack, setPlayerAttack] = useState(0);
 
+  //reduces enemy HP then makes enemy attack back
   async function reduceHp(atk: number) {
     //ativate player attack anim
     setPlayerAttack(1);
@@ -58,6 +66,7 @@ export function Battle() {
 
     await new Promise((resolve) => setTimeout(resolve, 3000));
     reducePlayerHp();
+    reduceMovesCooldown();
   }
 
   async function reducePlayerHp() {
@@ -77,6 +86,12 @@ export function Battle() {
     setCurrentPlayerHp((prev) => (prev -= battleObject!.atk));
     changeAttacked(false);
   }
+  function reduceMovesCooldown() {
+    console.log(currentMoves);
+    setCurrentMoves(
+      currentMoves.map((m) => ({ ...m, cooldown: m.cooldown - 1 }))
+    );
+  }
 
   //update battle deck
   useEffect(() => {
@@ -88,7 +103,7 @@ export function Battle() {
       window.alert("Você foi derrotado!");
       navigate("/CardBattle/battles/");
     }
-    // action on update of movies
+    // action on update of moves
   }, [currentDeck, changeGameStage, navigate, changeSelectedCard]);
 
   //change game stage when start
@@ -104,6 +119,7 @@ export function Battle() {
     }
     setCurrentPlayerHp(selectedCard.hp);
     setCharacterCurrentImg(selectedCard.characterImg);
+    setCurrentMoves(selectedCard.moves);
   }, [selectedCard]);
 
   return (
@@ -149,11 +165,12 @@ export function Battle() {
               >
                 Ataque básico
               </AttackBtn>
-              {selectedCard.moves.map((c) => {
+              {currentMoves.map((c) => {
                 return (
                   <AttackBtn
                     onClick={() => reduceHp(c.damage)}
                     disabled={c.cooldown > 0}
+                    key={c.name}
                   >
                     {c.name}
                   </AttackBtn>
