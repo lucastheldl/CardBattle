@@ -41,6 +41,7 @@ export function AuthContextProvider({ children }: AuthProviderProps) {
 
     return () => unsubscribe();
   }, []);
+
   function logOut() {
     signOut(auth);
   }
@@ -56,6 +57,7 @@ export function AuthContextProvider({ children }: AuthProviderProps) {
       console.log("user exists");
     }
     const userData = userDocSnapshot.data() as UserFile;
+    console.log(userData);
     setUserFile(userData);
   }
 

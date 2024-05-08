@@ -59,7 +59,7 @@ export const CardImageArea = styled.div`
   overflow: hidden;
 
   img {
-    width: 150px;
+    width: 100%;
     object-fit: cover;
   }
 `;
