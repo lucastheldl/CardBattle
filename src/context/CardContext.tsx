@@ -17,6 +17,7 @@ type CardContextType = {
   addCardToDeck: (card: CardType) => void;
   removeCardFromDeck: (id: string) => void;
   changeSelectedCard: (card: CardType | null) => void;
+  updateOwnedCards: () => void;
   /* addOwnCard: (card: Card) => void; */
 };
 type CardContextProviderProps = {
@@ -32,7 +33,7 @@ export function CardContextProvider({ children }: CardContextProviderProps) {
   const [selectedCard, setSelectedCard] = useState<CardType | null>(null);
   const { cards } = useFetchAllCards();
 
-  const { ownedCards } = useGetOwnedCards();
+  const { ownedCards, reFetchOwnedCards } = useGetOwnedCards();
 
   useEffect(() => {
     setavaliableCards(cards);
@@ -40,6 +41,7 @@ export function CardContextProvider({ children }: CardContextProviderProps) {
 
   useEffect(() => {
     setOwnCards(ownedCards);
+    console.log("A lista de cartas possuídas foi atualizada:", ownedCards);
   }, [ownedCards]);
 
   function addCardToDeck(card: CardType) {
@@ -56,7 +58,9 @@ export function CardContextProvider({ children }: CardContextProviderProps) {
     setSelectedCard(card);
   } */
 
-  //function updateOwnedCards() {}
+  function updateOwnedCards() {
+    reFetchOwnedCards();
+  }
 
   return (
     <CardContext.Provider
@@ -68,6 +72,7 @@ export function CardContextProvider({ children }: CardContextProviderProps) {
         addCardToDeck,
         removeCardFromDeck,
         changeSelectedCard,
+        updateOwnedCards,
         /* addOwnCard, */
       }}
     >
