@@ -1,4 +1,4 @@
-import { FormEvent, useContext, useState } from "react";
+import { FormEvent, useState } from "react";
 import {
   RegisterBtn,
   RegisterForm,
@@ -7,14 +7,11 @@ import {
 } from "./styles";
 import signUp from "../../../firebase/auth/signUp";
 import { NavLink } from "react-router-dom";
-import { AuthContext } from "../../../context/AuthContext";
 
 export function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-
-  const { fetchUserFile } = useContext(AuthContext);
 
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
@@ -26,7 +23,6 @@ export function Register() {
 
     // else successful
     console.log(result);
-    fetchUserFile();
   }
   return (
     <RegisterWrapper>

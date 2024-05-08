@@ -41,7 +41,7 @@ export function CardContextProvider({ children }: CardContextProviderProps) {
 
   useEffect(() => {
     setOwnCards(ownedCards);
-    console.log("A lista de cartas possuídas foi atualizada:", ownedCards);
+    //console.log("A lista de cartas possuídas foi atualizada:", ownedCards);
   }, [ownedCards]);
 
   function addCardToDeck(card: CardType) {

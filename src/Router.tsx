@@ -11,6 +11,7 @@ import { CreateCard } from "./pages/CreateCard";
 
 export function Router() {
   const { user } = useContext(AuthContext);
+  const { userFileRef } = useContext(AuthContext);
 
   return (
     <Routes>
@@ -31,7 +32,13 @@ export function Router() {
       />
       <Route
         path="/CardBattle/createCard"
-        element={!user ? <Navigate to="/CardBattle/" /> : <CreateCard />}
+        element={
+          userFileRef && userFileRef.role === "ADMIN" ? (
+            <CreateCard />
+          ) : (
+            <Navigate to="/CardBattle/" />
+          )
+        }
       />
     </Routes>
   );

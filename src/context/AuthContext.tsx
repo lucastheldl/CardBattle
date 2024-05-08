@@ -8,13 +8,12 @@ const auth = getAuth(app);
 interface UserFile {
   ownedCards: number[];
   money: number;
-  role: "ADMIN | USER";
+  role: "ADMIN" | "USER";
 }
 
 interface AuthContextType {
   user: User | null;
-  userFile: UserFile | null;
-  fetchUserFile: () => void;
+  userFileRef: UserFile | null;
   logOut: () => void;
 }
 
@@ -26,7 +25,7 @@ interface AuthProviderProps {
 
 export function AuthContextProvider({ children }: AuthProviderProps) {
   const [user, setUser] = useState<User | null>(null);
-  const [userFile, setUserFile] = useState<UserFile | null>(null);
+  const [userFileRef, setUserFileRef] = useState<UserFile | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -42,27 +41,30 @@ export function AuthContextProvider({ children }: AuthProviderProps) {
     return () => unsubscribe();
   }, []);
 
+  useEffect(() => {
+    async function fetchUserFile() {
+      if (user && !userFileRef) {
+        const userDocRef = doc(db, "users", user.uid);
+
+        const userDocSnapshot = await getDoc(userDocRef);
+
+        if (userDocSnapshot.exists()) {
+          //console.log("user exists");
+        }
+        const userData = userDocSnapshot.data() as UserFile;
+
+        setUserFileRef(userData);
+      }
+    }
+    fetchUserFile();
+  }, [user]);
+
   function logOut() {
     signOut(auth);
   }
-  async function fetchUserFile() {
-    if (!user) {
-      return;
-    }
-    const userDocRef = doc(db, "users", user.uid);
-
-    const userDocSnapshot = await getDoc(userDocRef);
-
-    if (userDocSnapshot.exists()) {
-      console.log("user exists");
-    }
-    const userData = userDocSnapshot.data() as UserFile;
-    console.log(userData);
-    setUserFile(userData);
-  }
 
   return (
-    <AuthContext.Provider value={{ user, logOut, fetchUserFile, userFile }}>
+    <AuthContext.Provider value={{ user, logOut, userFileRef }}>
       {loading ? <div>Carregando...</div> : children}
     </AuthContext.Provider>
   );
