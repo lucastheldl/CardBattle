@@ -19,6 +19,8 @@ export default async function signUp(email: string, password: string) {
     } else {
       await setDoc(userDocRef, {
         money: 300,
+        role: "USER",
+        ownedCards: [],
       });
     }
   } catch (e) {
