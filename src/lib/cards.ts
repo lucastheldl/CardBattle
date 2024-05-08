@@ -7,6 +7,9 @@ import lDragonEnemy from "../assets/LightDragon.png";
 //scenario
 import space from "../assets/c74e901922011b4516d02e7cff8cb45d.jpg";
 import mountain from "../assets/cba62536cf97f1a7441832d5b8bce18b.jpg";
+//Booster
+import boosterDefault from "../assets/Booster_null.jpg";
+import booster_1 from "../assets/Booster_1.jpg";
 
 export type CardType = {
   id: string;
@@ -47,6 +50,17 @@ export const cardList = [
     hp: 150,
     def: 30,
     atk: 40,
+  },
+];
+
+export const boosterList = [
+  { id: "0", name: "", img: boosterDefault, cards: [""], cost: 0 },
+  {
+    id: "1",
+    name: "Dimentional Strike",
+    img: booster_1,
+    cards: ["23123132", "f443f34gg"],
+    cost: 500,
   },
 ];
 
