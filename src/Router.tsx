@@ -8,6 +8,7 @@ import { AuthContext } from "./context/AuthContext";
 import { useContext } from "react";
 import { Login } from "./pages/auth/Login";
 import { CreateCard } from "./pages/CreateCard";
+import { Shop } from "./pages/Shop";
 
 export function Router() {
   const { user } = useContext(AuthContext);
@@ -29,6 +30,10 @@ export function Router() {
       <Route
         path="/CardBattle/auth/login"
         element={!user ? <Login /> : <Navigate to="/CardBattle/" />}
+      />
+      <Route
+        path="/CardBattle/shop"
+        element={user ? <Shop /> : <Navigate to="/CardBattle/" />}
       />
       <Route
         path="/CardBattle/createCard"

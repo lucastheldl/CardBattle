@@ -48,7 +48,7 @@ export function Header() {
         ) : (
           <>
             <li>
-              <NavLink to="/CardBattle/auth/shop">
+              <NavLink to="/CardBattle/shop">
                 <ShoppingBag width={22} />
                 Loja
               </NavLink>

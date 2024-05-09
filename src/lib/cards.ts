@@ -62,6 +62,9 @@ export const boosterList = [
     cards: ["23123132", "f443f34gg"],
     cost: 500,
   },
+  { id: "3", name: "", img: boosterDefault, cards: [""], cost: 0 },
+  { id: "4", name: "", img: boosterDefault, cards: [""], cost: 0 },
+  { id: "5", name: "", img: boosterDefault, cards: [""], cost: 0 },
 ];
 
 export const battleList = [
