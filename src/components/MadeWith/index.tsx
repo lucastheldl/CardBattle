@@ -8,9 +8,9 @@ export function MadeWith() {
     <MadeWithWrapper>
       <h1>Powered by</h1>
       <MadeWithContainer>
-        <img src={ReactIcon} alt="" />
-        <img src={FireIcon} alt="" />
-        <img src={TypeIcon} alt="" />
+        <img src={ReactIcon} alt="" title="React" />
+        <img src={FireIcon} alt="" title="Firebase" />
+        <img src={TypeIcon} alt="" title="Typescript" />
       </MadeWithContainer>
     </MadeWithWrapper>
   );

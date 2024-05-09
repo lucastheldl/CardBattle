@@ -15,11 +15,11 @@ export const CardContainer = styled.button<StatusProps>`
   border: ${(props) => {
     switch (props.rarity) {
       case "COMMON":
-        return `1px solid ${props.theme["red-500"]}`;
+        return `2px solid ${props.theme["red-500"]}`;
       case "RARE":
-        return `1px solid ${props.theme["gold-500"]}`;
+        return `2px inset ${props.theme["gold-500"]}`;
       case "LEGENDARY":
-        return `1px solid ${props.theme["red-500"]}`;
+        return `2px solid ${props.theme["red-500"]}`;
     }
   }};
   ${(props) =>
