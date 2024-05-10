@@ -2,6 +2,7 @@ import { createContext, ReactNode, useEffect, useState } from "react";
 import { getAuth, onAuthStateChanged, signOut, User } from "firebase/auth";
 import { app, db } from "../firebase/config";
 import { doc, getDoc } from "firebase/firestore";
+import { LoadingScreen } from "../components/LoadingScreen";
 
 const auth = getAuth(app);
 
@@ -65,7 +66,7 @@ export function AuthContextProvider({ children }: AuthProviderProps) {
 
   return (
     <AuthContext.Provider value={{ user, logOut, userFileRef }}>
-      {loading ? <div>Carregando...</div> : children}
+      {loading ? <LoadingScreen /> : children}
     </AuthContext.Provider>
   );
 }

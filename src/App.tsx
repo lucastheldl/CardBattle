@@ -25,12 +25,12 @@ function App() {
   return (
     <StyleSheetManager shouldForwardProp={shouldForwardProp}>
       <ThemeProvider theme={defaultTheme}>
+        <GlobalStyle />
         <AuthContextProvider>
           <GameContextProvider>
             <CardContextProvider>
               <ParallaxProvider>
                 <BrowserRouter>
-                  <GlobalStyle />
                   <Header />
                   <Router />
                   <Footer />
