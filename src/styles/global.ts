@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
   *{
@@ -19,6 +19,26 @@ export const GlobalStyle = createGlobalStyle`
   }
   body{
     background-color: ${(props) => props.theme["gray-900"]};
-
   }
   }`;
+
+export const DefaultBtn = styled.button`
+  padding: 1rem;
+  background-color: ${(props) => props.theme["red-500"]};
+  border: none;
+  border-radius: 6px;
+  box-sizing: border-box;
+
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  color: ${(props) => props.theme["gray-100"]};
+  border: 1px solid transparent;
+
+  &:hover {
+    transition: 0.2s background-color;
+    background-color: ${(props) => props.theme["red-300"]};
+    border: 1px solid ${(props) => props.theme["gray-800"]};
+    cursor: pointer;
+  }
+`;

@@ -3,11 +3,11 @@ import { useState, FormEvent, ChangeEvent } from "react";
 import {
   RegisterWrapper,
   RegisterForm,
-  RegisterBtn,
   RegisterInput,
 } from "../auth/Register/styles";
-import { addDoc, collection, setDoc } from "firebase/firestore";
+import { addDoc, collection } from "firebase/firestore";
 import { db } from "../../firebase/config";
+import { DefaultBtn } from "../../styles/global";
 
 export function CreateCard() {
   const [name, setName] = useState("");
@@ -172,7 +172,7 @@ export function CreateCard() {
           required
         />
 
-        <RegisterBtn type="submit">Criar carta</RegisterBtn>
+        <DefaultBtn type="submit">Criar carta</DefaultBtn>
       </RegisterForm>
     </RegisterWrapper>
   );

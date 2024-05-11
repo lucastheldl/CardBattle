@@ -1,7 +1,8 @@
 import { FormEvent, useState } from "react";
-import { LoginBtn, LoginForm, LoginInput, LoginWrapper } from "./styles";
+import { LoginForm, LoginInput, LoginWrapper } from "./styles";
 import signIn from "../../../firebase/auth/signIn";
 import { NavLink } from "react-router-dom";
+import { DefaultBtn } from "../../../styles/global";
 
 export function Login() {
   const [email, setEmail] = useState("");
@@ -42,7 +43,7 @@ export function Login() {
           required
         />
 
-        <LoginBtn type="submit">Entrar</LoginBtn>
+        <DefaultBtn type="submit">Entrar</DefaultBtn>
         <p>
           Não tem uma conta?{" "}
           <NavLink to={"/CardBattle/auth/register"}>Cadastre-se</NavLink>

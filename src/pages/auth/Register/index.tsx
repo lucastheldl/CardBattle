@@ -1,12 +1,8 @@
 import { FormEvent, useState } from "react";
-import {
-  RegisterBtn,
-  RegisterForm,
-  RegisterInput,
-  RegisterWrapper,
-} from "./styles";
+import { RegisterForm, RegisterInput, RegisterWrapper } from "./styles";
 import signUp from "../../../firebase/auth/signUp";
 import { NavLink } from "react-router-dom";
+import { DefaultBtn } from "../../../styles/global";
 
 export function Register() {
   const [email, setEmail] = useState("");
@@ -60,7 +56,7 @@ export function Register() {
           required
         />
 
-        <RegisterBtn type="submit">Cadastrar</RegisterBtn>
+        <DefaultBtn type="submit">Cadastrar</DefaultBtn>
         <p>
           Já tem uma conta?{" "}
           <NavLink to={"/CardBattle/auth/login"}>Entrar</NavLink>

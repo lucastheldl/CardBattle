@@ -22,6 +22,13 @@ export type CardType = {
   rarity: "COMMON" | "RARE" | "LEGENDARY";
   moves: { name: string; damage: number; cooldown: number }[];
 };
+export type Boostertype = {
+  id: string;
+  name: string;
+  img: string;
+  cards: string[];
+  cost: number;
+};
 
 export const cardList = [
   {
@@ -59,7 +66,7 @@ export const boosterList = [
     id: "1",
     name: "Dimentional Strike",
     img: booster_1,
-    cards: ["23123132", "f443f34gg"],
+    cards: ["FtMkaOY83uFVI3RrtsQg", "FtMkaOY83uFVI3RrtsQg"],
     cost: 500,
   },
   { id: "3", name: "", img: boosterDefault, cards: [""], cost: 0 },
