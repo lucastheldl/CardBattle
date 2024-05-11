@@ -29,10 +29,11 @@ export function Shop() {
     setIsCurrentState("IDLE");
   }
   async function buyRandomCard(booster: Boostertype) {
-    //Select random card from booster
-    //Make a db call to set it
+    const randomIndex = Math.floor(
+      Math.random() * currentBooster!.cards.length
+    );
 
-    const docRef = doc(db, "cards", booster.cards[0]);
+    const docRef = doc(db, "cards", booster.cards[randomIndex]);
     const docSnap = await getDoc(docRef);
 
     const card = docSnap.data() as CardType;

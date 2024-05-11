@@ -42,7 +42,7 @@ export const ModalContent = styled.div<ModalContent>`
   margin: 5% auto; /* 15% from the top and centered */
   padding: 20px;
   border-radius: 20px;
-  width: 30%;
+  max-width: 500px;
   min-height: 300px;
 
   .boosterArea {
@@ -57,7 +57,7 @@ export const ModalContent = styled.div<ModalContent>`
   }
   .cardArea {
     position: absolute;
-    top: 15%;
+    top: 23%;
     left: 50%;
     transform: translateX(-50%);
     display: ${(props) => (props.state === "DISPLAYING" ? "flex" : "none")};
@@ -70,8 +70,12 @@ export const ModalContent = styled.div<ModalContent>`
     10% {
       opacity: 1;
     }
+    99% {
+      transform: scale(1.5);
+      opacity: 0;
+    }
     100% {
-      transform: scale(1.2);
+      transform: scale(1);
       opacity: 0;
     }
   }

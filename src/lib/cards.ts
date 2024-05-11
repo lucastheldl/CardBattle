@@ -66,7 +66,11 @@ export const boosterList = [
     id: "1",
     name: "Dimentional Strike",
     img: booster_1,
-    cards: ["FtMkaOY83uFVI3RrtsQg", "FtMkaOY83uFVI3RrtsQg"],
+    cards: [
+      "FtMkaOY83uFVI3RrtsQg",
+      "Xr3ayKlhwYMAT0iNVCfF",
+      "dIYtIWOVHHbqPWjaXHwB",
+    ],
     cost: 500,
   },
   { id: "3", name: "", img: boosterDefault, cards: [""], cost: 0 },
