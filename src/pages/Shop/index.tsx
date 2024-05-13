@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Booster } from "../../components/Booster";
 import { boosterList, Boostertype, CardType } from "../../lib/cards";
 import {
@@ -9,9 +9,11 @@ import {
 } from "./styles";
 import { DefaultBtn } from "../../styles/global";
 import { Card } from "../../components/Card";
-import { doc, getDoc } from "firebase/firestore";
+import { arrayUnion, doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
 import { db } from "../../firebase/config";
 import { X } from "lucide-react";
+import { CardContext } from "../../context/CardContext";
+import { AuthContext } from "../../context/AuthContext";
 
 export function Shop() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -23,12 +25,18 @@ export function Shop() {
     "IDLE"
   );
 
+  const { updateOwnedCards } = useContext(CardContext);
+  const { user } = useContext(AuthContext);
+
   function handleToggleModal(booster: Boostertype | null) {
     setIsModalOpen((prevstate) => !prevstate);
     setIsCurrentBooster(booster);
     setIsCurrentState("IDLE");
   }
   async function buyRandomCard(booster: Boostertype) {
+    if (!user) {
+      return;
+    }
     const randomIndex = Math.floor(
       Math.random() * currentBooster!.cards.length
     );
@@ -37,6 +45,24 @@ export function Shop() {
     const docSnap = await getDoc(docRef);
 
     const card = docSnap.data() as CardType;
+    const cardId = docSnap.id;
+
+    //set card on db
+
+    const userDocRef = doc(db, "users", user!.uid);
+
+    const userDocSnapshot = await getDoc(userDocRef);
+
+    if (userDocSnapshot.exists()) {
+      await updateDoc(userDocRef, {
+        ownedCards: arrayUnion(cardId),
+      });
+    } else {
+      await setDoc(userDocRef, {
+        ownedCards: [cardId],
+      });
+    }
+    updateOwnedCards();
 
     setIsCurrentState("DISPLAYING");
     setCardBought(card);
