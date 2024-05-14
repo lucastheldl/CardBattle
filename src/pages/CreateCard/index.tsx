@@ -14,6 +14,12 @@ import {
   RarityTextContainer,
 } from "./styles";
 
+interface Move {
+  name: string;
+  damage: number;
+  cooldown: number;
+}
+
 export function CreateCard() {
   const [name, setName] = useState("");
   const [atk, setAtk] = useState<number>();
@@ -22,6 +28,8 @@ export function CreateCard() {
   const [imgUrl, setImgUrl] = useState("");
   const [characterImgUrl, setCharacterImgUrl] = useState("");
   const [rarity, setRarity] = useState("COMMON");
+
+  const [moves, setMoves] = useState<Move[]>([]);
 
   const [moveOneName, setMoveOneName] = useState("");
   const [moveOneDamage, setMoveOneDamage] = useState<number>(0);
@@ -42,13 +50,7 @@ export function CreateCard() {
         rarity,
         characterImg: characterImgUrl,
         img: imgUrl,
-        moves: [
-          {
-            name: moveOneName,
-            damage: moveOneDamage,
-            cooldown: moveOneCooldown,
-          },
-        ],
+        moves: moves,
       };
       await addDoc(collection(db, "cards"), card);
 
@@ -57,8 +59,28 @@ export function CreateCard() {
       console.error(error);
     }
   }
+  function handleAddMove() {
+    const moveToAdd = {
+      name: moveOneName,
+      damage: moveOneDamage,
+      cooldown: moveOneCooldown,
+    };
+
+    setMoves((prevstate) => [...prevstate, moveToAdd]);
+  }
+  function handleRemoveMove(name: string) {
+    setMoves((prevstate) => prevstate.filter((m) => m.name != name));
+  }
   return (
     <RegisterWrapper>
+      {moves.map((m) => {
+        return (
+          <div>
+            <p>{m.name}</p>
+            <button onClick={() => handleRemoveMove(m.name)}>Remove</button>
+          </div>
+        );
+      })}
       <h2>Criar uma carta</h2>
       <RegisterForm onSubmit={handleSubmit}>
         <label>Nome da Carta:</label>
@@ -147,7 +169,7 @@ export function CreateCard() {
             />
           </RarityBtnContainer>
         </RaritySection>
-        <h3>Moves</h3>
+        <h3>Move-1</h3>
 
         <label>Name:</label>
         <RegisterInput
@@ -176,6 +198,7 @@ export function CreateCard() {
           name="move-1-cooldown"
           required
         />
+        <DefaultBtn onClick={handleAddMove}>Add move</DefaultBtn>
 
         <DefaultBtn type="submit">Criar carta</DefaultBtn>
       </RegisterForm>
