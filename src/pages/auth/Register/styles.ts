@@ -4,6 +4,11 @@ export const RegisterWrapper = styled.main`
   width: 100%;
   max-width: 1120px;
   margin: 0 auto;
+
+  h3 {
+    color: ${(props) => props.theme["red-500"]};
+    padding-bottom: 2rem;
+  }
 `;
 export const RegisterForm = styled.form`
   width: 100%;

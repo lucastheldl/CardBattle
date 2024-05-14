@@ -30,7 +30,8 @@ export const BattleCardContainer = styled.div`
   }
 
   strong {
-    color: ${(props) => props.theme["red-500"]};
+    color: ${(props) => props.theme["red-300"]};
+    text-shadow: 1px 2px 2px black;
   }
 
   a {

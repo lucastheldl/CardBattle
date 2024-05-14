@@ -89,6 +89,7 @@ export const battleList = [
     hp: 270,
     atk: 40,
     def: 30,
+    reward: 200,
   },
   {
     id: "2",
@@ -100,6 +101,7 @@ export const battleList = [
     hp: 270,
     atk: 60,
     def: 40,
+    reward: 500,
   },
   {
     id: "3",
@@ -111,6 +113,7 @@ export const battleList = [
     hp: 200,
     atk: 40,
     def: 30,
+    reward: 300,
   },
   {
     id: "4",
@@ -119,8 +122,9 @@ export const battleList = [
     characterImg:
       "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/4b6ad5b1-cdfb-46da-841f-9b36cb5e443e/dhcvrrr-d85cbd5c-a563-4ae6-9f82-683efba317bc.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzRiNmFkNWIxLWNkZmItNDZkYS04NDFmLTliMzZjYjVlNDQzZVwvZGhjdnJyci1kODVjYmQ1Yy1hNTYzLTRhZTYtOWY4Mi02ODNlZmJhMzE3YmMucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.YMh3jEf-z5iQsO_2YACzJtZX8C0IHq_0i39wSc-JkpY",
     scenarioImg: mountain,
-    hp: 200,
-    atk: 40,
-    def: 30,
+    hp: 500,
+    atk: 50,
+    def: 40,
+    reward: 700,
   },
 ];

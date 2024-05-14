@@ -8,12 +8,17 @@ import {
 import { addDoc, collection } from "firebase/firestore";
 import { db } from "../../firebase/config";
 import { DefaultBtn } from "../../styles/global";
+import {
+  RarityBtnContainer,
+  RaritySection,
+  RarityTextContainer,
+} from "./styles";
 
 export function CreateCard() {
   const [name, setName] = useState("");
-  const [atk, setAtk] = useState<number>(0);
-  const [def, setDef] = useState<number>(0);
-  const [hp, setHp] = useState<number>(0);
+  const [atk, setAtk] = useState<number>();
+  const [def, setDef] = useState<number>();
+  const [hp, setHp] = useState<number>();
   const [imgUrl, setImgUrl] = useState("");
   const [characterImgUrl, setCharacterImgUrl] = useState("");
   const [rarity, setRarity] = useState("COMMON");
@@ -111,37 +116,37 @@ export function CreateCard() {
           name="hp"
           required
         />
-        <label>Raridade:</label>
-        <label>
-          <RegisterInput
-            type="radio"
-            onChange={(e) => handleRadioChange(e)}
-            value={"COMMON"}
-            name="rarity-1"
-            checked={rarity === "COMMON"}
-          />
-          Comun
-        </label>
-        <label>
-          <RegisterInput
-            type="radio"
-            onChange={(e) => handleRadioChange(e)}
-            value={"RARE"}
-            name="rarity-2"
-            checked={rarity === "RARE"}
-          />
-          Raro
-        </label>
-        <label>
-          <RegisterInput
-            type="radio"
-            onChange={(e) => handleRadioChange(e)}
-            value={"LEGENDARY"}
-            name="rarity-3"
-            checked={rarity === "LEGENDARY"}
-          />
-          Lendário
-        </label>
+        <h3>Raridade</h3>
+        <RaritySection>
+          <RarityTextContainer>
+            <label>Comun</label>
+            <label>Raro</label>
+            <label>Lendário</label>
+          </RarityTextContainer>
+          <RarityBtnContainer>
+            <RegisterInput
+              type="radio"
+              onChange={(e) => handleRadioChange(e)}
+              value={"COMMON"}
+              name="rarity-1"
+              checked={rarity === "COMMON"}
+            />
+            <RegisterInput
+              type="radio"
+              onChange={(e) => handleRadioChange(e)}
+              value={"RARE"}
+              name="rarity-2"
+              checked={rarity === "RARE"}
+            />
+            <RegisterInput
+              type="radio"
+              onChange={(e) => handleRadioChange(e)}
+              value={"LEGENDARY"}
+              name="rarity-3"
+              checked={rarity === "LEGENDARY"}
+            />
+          </RarityBtnContainer>
+        </RaritySection>
         <h3>Moves</h3>
 
         <label>Name:</label>
