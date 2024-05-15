@@ -9,17 +9,19 @@ export const CreateCardWrapper = styled.main`
   margin: 0 auto;
 `;
 
-export const FormContainer = styled.div`
+export const FormWrapper = styled.div`
   h3 {
     color: ${(props) => props.theme["red-500"]};
     padding-bottom: 2rem;
   }
 `;
-export const MovesContainer = styled.div`
+export const MovesContainer = styled.aside`
   display: flex;
   flex-direction: column;
   gap: 1rem;
+
   padding: 1rem;
+  min-width: 232px;
 
   .moveSlot {
     display: flex;
@@ -30,6 +32,10 @@ export const MovesContainer = styled.div`
     border: 1px solid ${(props) => props.theme["red-500"]};
     border-radius: 10px;
   }
+`;
+export const PreviewCardContainer = styled.aside`
+  min-width: 232px;
+  padding: 1rem;
 `;
 export const RaritySection = styled.div`
   display: flex;

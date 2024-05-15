@@ -6,12 +6,14 @@ import { db } from "../../firebase/config";
 import { DefaultBtn } from "../../styles/global";
 import {
   CreateCardWrapper,
-  FormContainer,
+  FormWrapper,
   MovesContainer,
+  PreviewCardContainer,
   RarityBtnContainer,
   RaritySection,
   RarityTextContainer,
 } from "./styles";
+import { Card } from "../../components/Card";
 
 interface Move {
   name: string;
@@ -26,7 +28,9 @@ export function CreateCard() {
   const [hp, setHp] = useState<number>();
   const [imgUrl, setImgUrl] = useState("");
   const [characterImgUrl, setCharacterImgUrl] = useState("");
-  const [rarity, setRarity] = useState("COMMON");
+  const [rarity, setRarity] = useState<"COMMON" | "RARE" | "LEGENDARY">(
+    "COMMON"
+  );
 
   const [moves, setMoves] = useState<Move[]>([]);
 
@@ -34,7 +38,8 @@ export function CreateCard() {
   const [moveOneDamage, setMoveOneDamage] = useState<number>(0);
   const [moveOneCooldown, setMoveOneCooldown] = useState<number>(0);
   function handleRadioChange(e: ChangeEvent<HTMLInputElement>) {
-    setRarity(e.target.value);
+    const value = e.target.value as "COMMON" | "RARE" | "LEGENDARY";
+    setRarity(value);
   }
 
   async function handleSubmit(e: FormEvent) {
@@ -72,7 +77,21 @@ export function CreateCard() {
   }
   return (
     <CreateCardWrapper>
-      <FormContainer>
+      <PreviewCardContainer>
+        <Card
+          atk={atk ? atk : 0}
+          def={def ? def : 0}
+          hp={hp ? hp : 0}
+          name={name}
+          img={imgUrl}
+          rarity={rarity}
+          characterImg={characterImgUrl}
+          moves={moves}
+          id=""
+        />
+      </PreviewCardContainer>
+
+      <FormWrapper>
         <h2>Criar uma carta</h2>
         <RegisterForm onSubmit={handleSubmit}>
           <label>Nome da Carta:</label>
@@ -190,11 +209,13 @@ export function CreateCard() {
             name="move-1-cooldown"
             required
           />
-          <DefaultBtn onClick={handleAddMove}>Add move</DefaultBtn>
+          <DefaultBtn type="button" onClick={handleAddMove}>
+            Add move
+          </DefaultBtn>
 
           <DefaultBtn type="submit">Criar carta</DefaultBtn>
         </RegisterForm>
-      </FormContainer>
+      </FormWrapper>
 
       <MovesContainer>
         {moves.map((m, i) => {
