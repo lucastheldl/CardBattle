@@ -7,6 +7,8 @@ interface StatusProps {
 export const CardContainer = styled.button<StatusProps>`
   display: flex;
   flex-direction: column;
+
+  align-items: center;
   max-width: 180px;
 
   height: 270px;
@@ -87,5 +89,18 @@ export const CardDescription = styled.div`
 
   p {
     color: ${(props) => props.theme["gray-100"]};
+  }
+`;
+export const CardStats = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-top: auto;
+
+  p {
+    color: ${(props) => props.theme["red-500"]};
+    font-size: 0.8rem;
+    font-weight: bold;
   }
 `;

@@ -4,6 +4,7 @@ import {
   CardDescription,
   CardImageArea,
   CardInfoArea,
+  CardStats,
 } from "./styles";
 import { GameContext } from "../../context/GameContext";
 import { CardContext } from "../../context/CardContext";
@@ -65,6 +66,9 @@ export function Card(props: CardType) {
             );
           })}
       </CardDescription>
+      <CardStats>
+        <p>{`A: ${props.atk} | V: ${props.hp} | D: ${props.def}`}</p>
+      </CardStats>
     </CardContainer>
   );
 }
