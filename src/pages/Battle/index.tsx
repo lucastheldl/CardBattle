@@ -17,6 +17,9 @@ import { useContext, useEffect, useState } from "react";
 import { Card } from "../../components/Card";
 import { GameContext } from "../../context/GameContext";
 import { CardContext } from "../../context/CardContext";
+import { AuthContext } from "../../context/AuthContext";
+import { doc, getDoc, updateDoc } from "firebase/firestore";
+import { db } from "../../firebase/config";
 
 interface Moves {
   name: string;
@@ -32,8 +35,10 @@ export function Battle() {
   const { gameStage, attacked, changeGameStage, changeAttacked } =
     useContext(GameContext);
 
+  const { user, userFileRef } = useContext(AuthContext);
+
   const navigate = useNavigate();
-  const battleObject = battleList.find((battle) => battle.id === id);
+  const battleObject = battleList.find((battle) => battle.id === id)!;
 
   const [currentHp, setCurrentHp] = useState(battleObject!.hp);
   const [currentPlayerHp, setCurrentPlayerHp] = useState(0);
@@ -56,7 +61,21 @@ export function Battle() {
     if (currentHp <= atk) {
       setCurrentHp(0);
       await new Promise((resolve) => setTimeout(resolve, 500));
-      window.alert("VITÓRIA!");
+      window.alert("*VITÓRIA!*");
+      window.alert(`Recompoensa recebida: ${battleObject?.reward}`);
+      //Add reward
+      const userDocRef = doc(db, "users", user!.uid);
+
+      const userDocSnapshot = await getDoc(userDocRef);
+
+      if (userDocSnapshot.exists() && userFileRef) {
+        const newMoneyAmount = (userFileRef.money += battleObject?.reward);
+
+        await updateDoc(userDocRef, {
+          money: newMoneyAmount,
+        });
+      }
+      //reward
       navigate("/CardBattle/battles/");
 
       return;
@@ -87,6 +106,7 @@ export function Battle() {
     setCurrentPlayerHp((prev) => (prev -= battleObject!.atk));
     changeAttacked(false);
   }
+
   function reduceMovesCooldown() {
     console.log(currentMoves);
     setCurrentMoves(
