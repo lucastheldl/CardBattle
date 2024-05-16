@@ -10,6 +10,7 @@ import { GameContext } from "../../context/GameContext";
 import { CardContext } from "../../context/CardContext";
 
 import { CardType } from "../../lib/cards";
+import { Cross, Shield, Swords } from "lucide-react";
 
 export function Card(props: CardType) {
   const { cardsInDeck, addCardToDeck, removeCardFromDeck, changeSelectedCard } =
@@ -67,7 +68,18 @@ export function Card(props: CardType) {
           })}
       </CardDescription>
       <CardStats>
-        <p>{`A: ${props.atk} | V: ${props.hp} | D: ${props.def}`}</p>
+        <div className="stat-container">
+          <Swords size={15} />
+          <p>{`: ${props.atk} |`}</p>
+        </div>
+        <div className="stat-container">
+          <Cross size={15} />
+          <p>{`: ${props.hp} |`}</p>
+        </div>
+        <div className="stat-container">
+          <Shield size={15} />
+          <p>{`: ${props.def}`}</p>
+        </div>
       </CardStats>
     </CardContainer>
   );

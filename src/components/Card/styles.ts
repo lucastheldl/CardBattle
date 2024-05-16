@@ -95,12 +95,21 @@ export const CardStats = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 0.1rem;
 
   margin-top: auto;
 
-  p {
-    color: ${(props) => props.theme["red-500"]};
-    font-size: 0.8rem;
-    font-weight: bold;
+  .stat-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    p {
+      color: ${(props) => props.theme["red-500"]};
+      font-size: 0.8rem;
+      font-weight: bold;
+    }
+    svg {
+      color: ${(props) => props.theme["red-500"]};
+    }
   }
 `;

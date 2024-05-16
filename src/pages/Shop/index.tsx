@@ -26,7 +26,7 @@ export function Shop() {
   );
 
   const { updateOwnedCards } = useContext(CardContext);
-  const { user } = useContext(AuthContext);
+  const { user, userFileRef } = useContext(AuthContext);
 
   function handleToggleModal(booster: Boostertype | null) {
     setIsModalOpen((prevstate) => !prevstate);
@@ -34,8 +34,12 @@ export function Shop() {
     setIsCurrentState("IDLE");
   }
   async function buyRandomCard(booster: Boostertype) {
-    if (!user) {
+    if (!user || !userFileRef) {
       return;
+    }
+
+    if (userFileRef.money < booster.cost) {
+      return window.alert("Pontos insuficientes!");
     }
     const randomIndex = Math.floor(
       Math.random() * currentBooster!.cards.length
@@ -54,8 +58,11 @@ export function Shop() {
     const userDocSnapshot = await getDoc(userDocRef);
 
     if (userDocSnapshot.exists()) {
+      const newMoneyAmount = (userFileRef.money -= booster.cost);
+
       await updateDoc(userDocRef, {
         ownedCards: arrayUnion(cardId),
+        money: newMoneyAmount,
       });
     } else {
       await setDoc(userDocRef, {
@@ -86,7 +93,7 @@ export function Shop() {
       <ModalContainer state={isModalOpen}>
         <ModalContent state={currentState}>
           <ModalHeader>
-            <h3>Pontos: 2000⁋</h3>
+            <h3>Pontos: {userFileRef?.money}⁋</h3>
             <button onClick={() => handleToggleModal(null)} title="Fechar">
               <X size={30} />
             </button>
