@@ -41,7 +41,7 @@ export const Deck = styled.div`
   display: flex;
   justify-content: center;
   gap: 2rem;
-  height: 340px;
+
   width: 700px;
 
   padding: 1rem;

@@ -62,7 +62,7 @@ export function Battle() {
       setCurrentHp(0);
       await new Promise((resolve) => setTimeout(resolve, 500));
       window.alert("*VITÓRIA!*");
-      window.alert(`Recompoensa recebida: ${battleObject?.reward}`);
+      window.alert(`Recompoensa recebida: ${battleObject?.reward}⁋`);
       //Add reward
       const userDocRef = doc(db, "users", user!.uid);
 
