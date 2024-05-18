@@ -27,8 +27,8 @@ function App() {
       <ThemeProvider theme={defaultTheme}>
         <GlobalStyle />
         <AuthContextProvider>
-          <GameContextProvider>
-            <CardContextProvider>
+          <CardContextProvider>
+            <GameContextProvider>
               <ParallaxProvider>
                 <BrowserRouter>
                   <Header />
@@ -36,8 +36,8 @@ function App() {
                   <Footer />
                 </BrowserRouter>
               </ParallaxProvider>
-            </CardContextProvider>
-          </GameContextProvider>
+            </GameContextProvider>
+          </CardContextProvider>
         </AuthContextProvider>
       </ThemeProvider>
     </StyleSheetManager>

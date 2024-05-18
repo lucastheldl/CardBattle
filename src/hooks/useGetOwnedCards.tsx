@@ -29,8 +29,15 @@ export function useGetOwnedCards() {
       if (userDocSnapshot.exists()) {
         const userData = userDocSnapshot.data();
         const ownedCardsIds = userData.ownedCards || [];
+        console.log(ownedCardsIds);
 
         const cardsCollection = collection(db, "cards");
+
+        if (ownedCardsIds.length < 0) {
+          setOwnedCards([]);
+          console.log("No ids");
+          return;
+        }
         const queryByCardIds = query(
           cardsCollection,
           where("__name__", "in", ownedCardsIds)

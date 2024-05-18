@@ -3,6 +3,7 @@ import { RegisterForm, RegisterInput, RegisterWrapper } from "./styles";
 import signUp from "../../../firebase/auth/signUp";
 import { NavLink } from "react-router-dom";
 import { DefaultBtn } from "../../../styles/global";
+import signIn from "../../../firebase/auth/signIn";
 
 export function Register() {
   const [email, setEmail] = useState("");
@@ -12,6 +13,16 @@ export function Register() {
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
     const { result, error } = await signUp(email, password);
+
+    if (error) {
+      return console.log(error);
+    }
+
+    // else successful
+    console.log(result);
+  }
+  async function signInAsGuest() {
+    const { result, error } = await signIn("recruter@gmail.com", "1234567812");
 
     if (error) {
       return console.log(error);
@@ -61,6 +72,9 @@ export function Register() {
           Já tem uma conta?{" "}
           <NavLink to={"/CardBattle/auth/login"}>Entrar</NavLink>
         </p>
+        <DefaultBtn type="button" dark={true} onClick={signInAsGuest}>
+          Entrar como recrutador
+        </DefaultBtn>
       </RegisterForm>
     </RegisterWrapper>
   );

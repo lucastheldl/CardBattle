@@ -61,6 +61,7 @@ export function AuthContextProvider({ children }: AuthProviderProps) {
   }, [user]);
 
   function logOut() {
+    setUserFileRef(null);
     signOut(auth);
   }
 

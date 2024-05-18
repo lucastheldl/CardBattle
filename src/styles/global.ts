@@ -19,21 +19,30 @@ export const GlobalStyle = createGlobalStyle`
   }
   body{
     background-color: ${(props) => props.theme["gray-900"]};
+    
   }
-  }`;
 
-export const DefaultBtn = styled.button`
+  }`;
+interface DefaultBtnProps {
+  fontSize?: number;
+  dark?: boolean;
+}
+
+export const DefaultBtn = styled.button<DefaultBtnProps>`
   padding: 1rem;
-  background-color: ${(props) => props.theme["red-500"]};
+  background-color: ${(props) =>
+    props.dark ? props.theme["gray-900"] : props.theme["red-500"]};
   border: none;
   border-radius: 6px;
   box-sizing: border-box;
 
   font-weight: bold;
   text-align: center;
+  font-size: ${(props) => (props.fontSize ? `${props.fontSize}rem` : `0.8rem`)};
   text-decoration: none;
   color: ${(props) => props.theme["gray-100"]};
-  border: 1px solid transparent;
+  border: 1px solid
+    ${(props) => (props.dark ? props.theme["red-500"] : "transparent")};
 
   &:hover {
     transition: 0.2s background-color;

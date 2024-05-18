@@ -2,12 +2,14 @@ import {
   ReactNode,
   createContext,
   useCallback,
+  useContext,
   useEffect,
   useState,
 } from "react";
 import { useFetchAllCards } from "../hooks/useFetchAllCards";
 import { useGetOwnedCards } from "../hooks/useGetOwnedCards";
 import { CardType } from "../lib/cards";
+import { AuthContext } from "./AuthContext";
 
 type CardContextType = {
   cardsInDeck: CardType[];
@@ -31,9 +33,16 @@ export function CardContextProvider({ children }: CardContextProviderProps) {
   const [avaliableCards, setavaliableCards] = useState<CardType[]>([]);
   const [OwnCards, setOwnCards] = useState<CardType[]>([]);
   const [selectedCard, setSelectedCard] = useState<CardType | null>(null);
-  const { cards } = useFetchAllCards();
 
+  const { user } = useContext(AuthContext);
+  const { cards } = useFetchAllCards();
   const { ownedCards, reFetchOwnedCards } = useGetOwnedCards();
+
+  useEffect(() => {
+    if (user) {
+      updateOwnedCards();
+    }
+  }, [user]);
 
   useEffect(() => {
     setavaliableCards(cards);
@@ -41,7 +50,7 @@ export function CardContextProvider({ children }: CardContextProviderProps) {
 
   useEffect(() => {
     setOwnCards(ownedCards);
-    //console.log("A lista de cartas possuídas foi atualizada:", ownedCards);
+    console.log("A lista de cartas possuídas foi atualizada:", ownedCards);
   }, [ownedCards]);
 
   function addCardToDeck(card: CardType) {

@@ -24,7 +24,7 @@ export const RegisterForm = styled.form`
     font-weight: bold;
   }
   p {
-    margin-top: 1rem;
+    margin: 1rem 0;
     color: ${(props) => props.theme["red-500"]};
     a {
       color: ${(props) => props.theme["red-300"]};
