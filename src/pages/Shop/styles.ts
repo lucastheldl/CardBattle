@@ -1,5 +1,10 @@
 import styled from "styled-components";
 
+export const ShopWrapper = styled.main`
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+`;
 export const ShopContainer = styled.div`
   display: flex;
   gap: 2rem;

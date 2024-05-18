@@ -6,12 +6,13 @@ import {
   ModalContent,
   ModalHeader,
   ShopContainer,
+  ShopWrapper,
 } from "./styles";
 import { DefaultBtn } from "../../styles/global";
 import { Card } from "../../components/Card";
 import { arrayUnion, doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
 import { db } from "../../firebase/config";
-import { X } from "lucide-react";
+import { ShoppingBag, X } from "lucide-react";
 import { CardContext } from "../../context/CardContext";
 import { AuthContext } from "../../context/AuthContext";
 
@@ -79,17 +80,23 @@ export function Shop() {
     setCardBought(null);
   }
   return (
-    <ShopContainer>
-      {boosterList.map((b) => {
-        return (
-          <Booster
-            key={b.id}
-            img={b.img}
-            name={b.name}
-            handleToggleModal={() => handleToggleModal(b)}
-          />
-        );
-      })}
+    <ShopWrapper>
+      <h1>
+        <ShoppingBag size={30} /> Compre pacotes para receber uma carta
+        aleátoria
+      </h1>
+      <ShopContainer>
+        {boosterList.map((b) => {
+          return (
+            <Booster
+              key={b.id}
+              img={b.img}
+              name={b.name}
+              handleToggleModal={() => handleToggleModal(b)}
+            />
+          );
+        })}
+      </ShopContainer>
       <ModalContainer state={isModalOpen}>
         <ModalContent state={currentState}>
           <ModalHeader>
@@ -125,6 +132,6 @@ export function Shop() {
           )}
         </ModalContent>
       </ModalContainer>
-    </ShopContainer>
+    </ShopWrapper>
   );
 }

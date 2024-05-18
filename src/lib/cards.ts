@@ -10,6 +10,7 @@ import mountain from "../assets/cba62536cf97f1a7441832d5b8bce18b.jpg";
 //Booster
 import boosterDefault from "../assets/Booster_null.jpg";
 import booster_1 from "../assets/Booster_1.jpg";
+import booster_2 from "../assets/Booster_2.jpg";
 
 export type CardType = {
   id: string;
@@ -61,7 +62,18 @@ export const cardList = [
 ];
 
 export const boosterList = [
-  { id: "0", name: "", img: boosterDefault, cards: [""], cost: 0 },
+  {
+    id: "0",
+    name: "Chaotic Uprise",
+    img: booster_2,
+    cards: [
+      "bLtzbgFzK4LE1mXYEwo8",
+      "Xr3ayKlhwYMAT0iNVCfF",
+      "jwkquj6nHyaffJYeC3Wd",
+      "txiPmKzNKQ0LHRQYPzRE",
+    ],
+    cost: 500,
+  },
   {
     id: "1",
     name: "Dimentional Strike",
