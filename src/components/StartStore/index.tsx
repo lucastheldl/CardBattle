@@ -24,6 +24,14 @@ export function StartStore() {
   const parallax = useParallax({
     translateY: [-30, 35],
   });
+  const inDisplayCardIds: string[] = [
+    "Arthemia",
+    "Hallowen Hound",
+    "Captão Elister",
+  ];
+  const inDisplayCards = avaliableCards.filter((c) =>
+    inDisplayCardIds.includes(c.name)
+  );
 
   async function handleBuy(card: CardType) {
     //addOwnCard(card);
@@ -58,7 +66,7 @@ export function StartStore() {
           {avaliableCards ? (
             <>
               <CardContainer>
-                <Card {...avaliableCards[1]} />
+                <Card {...inDisplayCards[1]} />
                 <BuyButton
                   onClick={() => handleBuy(avaliableCards[1])}
                   disabled={
@@ -76,7 +84,7 @@ export function StartStore() {
               </CardContainer>
 
               <CardContainer>
-                <Card {...avaliableCards[2]} />
+                <Card {...inDisplayCards[2]} />
                 <BuyButton
                   onClick={() => handleBuy(avaliableCards[2])}
                   disabled={
@@ -94,7 +102,7 @@ export function StartStore() {
               </CardContainer>
 
               <CardContainer>
-                <Card {...avaliableCards[0]} />
+                <Card {...inDisplayCards[0]} />
                 <BuyButton
                   onClick={() => handleBuy(avaliableCards[0])}
                   disabled={
