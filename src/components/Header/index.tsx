@@ -17,7 +17,7 @@ export function Header() {
   const { userFileRef } = useContext(AuthContext);
   return (
     <HeaderContainer>
-      <NavLink to="/CardBattle/">
+      <NavLink to="/CardBattle/" className="logo">
         Card<span>Battle</span>
       </NavLink>
       <ul>

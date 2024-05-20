@@ -12,6 +12,28 @@ export const HeaderContainer = styled.nav`
   border-bottom: 2px solid ${(props) => props.theme["red-500"]};
   margin-bottom: 2rem;
 
+  .logo {
+    position: relative;
+    &::before {
+      position: absolute;
+      content: "";
+      width: 30px;
+      height: 30px;
+      border-radius: 5px;
+
+      transform: translateX(-8px) rotate(45deg);
+
+      background-color: ${(props) => props.theme["red-300"]};
+      z-index: -1;
+      transition: all 0.2s;
+    }
+    &:hover {
+      &::before {
+        transform: translateX(110px) rotate(315deg);
+      }
+    }
+  }
+
   ul {
     display: flex;
     align-items: center;
