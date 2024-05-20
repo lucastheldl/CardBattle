@@ -19,7 +19,7 @@ export function Router() {
       <Route path="/CardBattle/" element={<Home />} />
       <Route
         path="/CardBattle/deck"
-        element={!user ? <Register /> : <Deck />}
+        element={!user ? <Navigate to="/CardBattle/auth/register" /> : <Deck />}
       />
       <Route path="/CardBattle/battles" element={<Battles />} />
       <Route path="/CardBattle/battles/:id" element={<Battle />} />
