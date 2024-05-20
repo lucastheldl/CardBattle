@@ -71,7 +71,7 @@ export function StartStore() {
                   onClick={() => handleBuy(avaliableCards[1])}
                   disabled={
                     OwnCards.filter((e) => e.id === avaliableCards[1].id)
-                      .length > 0
+                      .length > 0 || !user
                   }
                 >
                   {OwnCards.filter((e) => e.id === avaliableCards[1].id)
@@ -89,7 +89,7 @@ export function StartStore() {
                   onClick={() => handleBuy(avaliableCards[2])}
                   disabled={
                     OwnCards.filter((e) => e.id === avaliableCards[2].id)
-                      .length > 0
+                      .length > 0 || !user
                   }
                 >
                   {OwnCards.filter((e) => e.id === avaliableCards[2].id)
@@ -107,7 +107,7 @@ export function StartStore() {
                   onClick={() => handleBuy(avaliableCards[0])}
                   disabled={
                     OwnCards.filter((e) => e.id === avaliableCards[0].id)
-                      .length > 0
+                      .length > 0 || !user
                   }
                 >
                   {OwnCards.filter((e) => e.id === avaliableCards[0].id)
