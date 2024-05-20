@@ -61,7 +61,7 @@ export function StartStore() {
       </Cover>
 
       <StartStoreContainer>
-        <h1>Compre sua primeira carta!</h1>
+        <h1>Compre sua primeira carta Grátis!</h1>
         <Deck>
           {avaliableCards ? (
             <>

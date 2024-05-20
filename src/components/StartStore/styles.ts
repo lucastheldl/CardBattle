@@ -10,7 +10,7 @@ export const StartStoreWrapper = styled.section`
   overflow: hidden;
   h1 {
     font-size: 2rem;
-    text-shadow: 1px 1px 0.1px ${(props) => props.theme["gray-800"]};
+    text-shadow: 1px 2px 1px ${(props) => props.theme["gray-800"]};
   }
 `;
 export const Cover = styled.div`
