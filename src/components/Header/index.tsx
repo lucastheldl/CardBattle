@@ -1,6 +1,14 @@
 import { NavLink } from "react-router-dom";
 import { HeaderContainer } from "./styles";
-import { Swords, Inbox, ShoppingBag, Pencil } from "lucide-react";
+import {
+  Swords,
+  Inbox,
+  ShoppingBag,
+  Pencil,
+  LogIn,
+  Book,
+  LogOut,
+} from "lucide-react";
 import { AuthContext } from "../../context/AuthContext";
 import { useContext } from "react";
 
@@ -39,10 +47,16 @@ export function Header() {
         {!user ? (
           <>
             <li>
-              <NavLink to="/CardBattle/auth/login">Entrar</NavLink>
+              <NavLink to="/CardBattle/auth/login">
+                <LogIn width={22} />
+                Entrar
+              </NavLink>
             </li>
             <li>
-              <NavLink to="/CardBattle/auth/register">Cadastrar</NavLink>
+              <NavLink to="/CardBattle/auth/register">
+                <Book width={22} />
+                Cadastrar
+              </NavLink>
             </li>
           </>
         ) : (
@@ -54,7 +68,10 @@ export function Header() {
               </NavLink>
             </li>
             <li>
-              <button onClick={logOut}>Sair</button>
+              <button onClick={logOut}>
+                <LogOut width={22} />
+                Sair
+              </button>
             </li>
           </>
         )}
