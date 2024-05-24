@@ -15,23 +15,34 @@ export const DeckContainer = styled.main`
   .avaliableCards,
   .deck {
     display: flex;
+
     gap: 0.5rem;
 
     padding: 1rem;
-    background-color: ${(props) => props.theme["red-500"]};
+
     border-radius: 6px;
   }
   .avaliableCards {
+    flex-wrap: wrap;
     margin-bottom: 10rem;
-    height: 300px;
-    width: 100%;
+    min-height: 300px;
+    max-width: 950px;
+    background-color: ${(props) => props.theme["red-500"]};
   }
   .deck {
     position: fixed;
-    bottom: 0.5rem;
+    justify-content: center;
+    bottom: -15rem;
 
     border: 2px solid ${(props) => props.theme["gray-900"]};
-    height: 300px;
+    background-color: ${(props) => props.theme["red-300"]};
+    min-height: 300px;
     width: 550px;
+
+    transition: bottom 0.2s linear;
+
+    &:hover {
+      bottom: 0.5rem;
+    }
   }
 `;
