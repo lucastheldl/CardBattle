@@ -98,9 +98,9 @@ export const battleList = [
     characterImg:
       "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/4b6ad5b1-cdfb-46da-841f-9b36cb5e443e/dhcvrty-24d545a1-eb00-4308-82c4-98e9c72e5016.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzRiNmFkNWIxLWNkZmItNDZkYS04NDFmLTliMzZjYjVlNDQzZVwvZGhjdnJ0eS0yNGQ1NDVhMS1lYjAwLTQzMDgtODJjNC05OGU5YzcyZTUwMTYucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.hFAle4t2gQSOUBzqzIDS99d6MLWXFj9c6UeVjuA-Ydo",
     scenarioImg: space,
-    hp: 270,
-    atk: 40,
-    def: 30,
+    hp: 35,
+    atk: 15,
+    def: 10,
     reward: 200,
   },
   {
@@ -110,9 +110,9 @@ export const battleList = [
     characterImg:
       "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/4b6ad5b1-cdfb-46da-841f-9b36cb5e443e/dhcvrxx-1cb71d2e-b218-4d6d-9143-e6aa30ca67b7.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzRiNmFkNWIxLWNkZmItNDZkYS04NDFmLTliMzZjYjVlNDQzZVwvZGhjdnJ4eC0xY2I3MWQyZS1iMjE4LTRkNmQtOTE0My1lNmFhMzBjYTY3YjcucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.n1iCRfSHYl6RDKYiuVngJh_a1RtJpa5uNniynoAGu4A",
     scenarioImg: mountain,
-    hp: 270,
-    atk: 60,
-    def: 40,
+    hp: 50,
+    atk: 20,
+    def: 10,
     reward: 500,
   },
   {
@@ -122,9 +122,9 @@ export const battleList = [
     characterImg:
       "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/4b6ad5b1-cdfb-46da-841f-9b36cb5e443e/dhcvrqu-554b3fd0-ae81-4539-adb4-1dfafa9a4d84.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzRiNmFkNWIxLWNkZmItNDZkYS04NDFmLTliMzZjYjVlNDQzZVwvZGhjdnJxdS01NTRiM2ZkMC1hZTgxLTQ1MzktYWRiNC0xZGZhZmE5YTRkODQucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.F1Z2dBqt3q_YkclgoFn-pb-4EpiH0zQthVA3MvPjxLc",
     scenarioImg: mountain,
-    hp: 200,
-    atk: 40,
-    def: 30,
+    hp: 40,
+    atk: 15,
+    def: 8,
     reward: 300,
   },
   {
@@ -134,9 +134,9 @@ export const battleList = [
     characterImg:
       "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/4b6ad5b1-cdfb-46da-841f-9b36cb5e443e/dhcvrrr-d85cbd5c-a563-4ae6-9f82-683efba317bc.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzRiNmFkNWIxLWNkZmItNDZkYS04NDFmLTliMzZjYjVlNDQzZVwvZGhjdnJyci1kODVjYmQ1Yy1hNTYzLTRhZTYtOWY4Mi02ODNlZmJhMzE3YmMucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.YMh3jEf-z5iQsO_2YACzJtZX8C0IHq_0i39wSc-JkpY",
     scenarioImg: mountain,
-    hp: 500,
-    atk: 50,
-    def: 40,
+    hp: 45,
+    atk: 15,
+    def: 9,
     reward: 700,
   },
 ];
