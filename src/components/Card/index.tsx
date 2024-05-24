@@ -52,7 +52,7 @@ export function Card(props: CardType) {
   return (
     <CardContainer onClick={handleClick} rarity={props.rarity}>
       <CardImageArea>
-        <img src={props.img} />
+        <img src={props.img} loading="lazy" />
       </CardImageArea>
       <CardInfoArea>
         <strong>{props.name}</strong>
