@@ -68,13 +68,13 @@ export function StartStore() {
               <CardContainer>
                 <Card {...inDisplayCards[1]} />
                 <BuyButton
-                  onClick={() => handleBuy(avaliableCards[1])}
+                  onClick={() => handleBuy(inDisplayCards[1])}
                   disabled={
-                    OwnCards.filter((e) => e.id === avaliableCards[1].id)
+                    OwnCards.filter((e) => e.id === inDisplayCards[1].id)
                       .length > 0 || !user
                   }
                 >
-                  {OwnCards.filter((e) => e.id === avaliableCards[1].id)
+                  {OwnCards.filter((e) => e.id === inDisplayCards[1].id)
                     .length > 0 ? (
                     <>Possui</>
                   ) : (
@@ -86,13 +86,13 @@ export function StartStore() {
               <CardContainer>
                 <Card {...inDisplayCards[2]} />
                 <BuyButton
-                  onClick={() => handleBuy(avaliableCards[2])}
+                  onClick={() => handleBuy(inDisplayCards[2])}
                   disabled={
-                    OwnCards.filter((e) => e.id === avaliableCards[2].id)
+                    OwnCards.filter((e) => e.id === inDisplayCards[2].id)
                       .length > 0 || !user
                   }
                 >
-                  {OwnCards.filter((e) => e.id === avaliableCards[2].id)
+                  {OwnCards.filter((e) => e.id === inDisplayCards[2].id)
                     .length > 0 ? (
                     <>Possui</>
                   ) : (
@@ -104,13 +104,13 @@ export function StartStore() {
               <CardContainer>
                 <Card {...inDisplayCards[0]} />
                 <BuyButton
-                  onClick={() => handleBuy(avaliableCards[0])}
+                  onClick={() => handleBuy(inDisplayCards[0])}
                   disabled={
-                    OwnCards.filter((e) => e.id === avaliableCards[0].id)
+                    OwnCards.filter((e) => e.id === inDisplayCards[0].id)
                       .length > 0 || !user
                   }
                 >
-                  {OwnCards.filter((e) => e.id === avaliableCards[0].id)
+                  {OwnCards.filter((e) => e.id === inDisplayCards[0].id)
                     .length > 0 ? (
                     <>Possui</>
                   ) : (
