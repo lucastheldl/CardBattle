@@ -1,10 +1,9 @@
 import { BoosterContainer } from "./styles";
-import { Boostertype } from "../../lib/cards";
 
 interface BoosterProps {
   img: string;
   name: string;
-  handleToggleModal: (booster: Boostertype) => void;
+  handleToggleModal: () => void;
 }
 
 export function Booster({ img, name, handleToggleModal }: BoosterProps) {

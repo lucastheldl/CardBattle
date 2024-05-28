@@ -24,6 +24,7 @@ export function StartStore() {
   const parallax = useParallax({
     translateY: [-30, 35],
   });
+
   const inDisplayCardIds: string[] = [
     "Arthemia",
     "Hallowen Hound",
@@ -57,6 +58,7 @@ export function StartStore() {
   return (
     <StartStoreWrapper>
       <Cover>
+        {/*@ts-ignore*/}
         <img src={bg} alt="" ref={parallax.ref} />
       </Cover>
 
