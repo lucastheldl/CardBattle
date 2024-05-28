@@ -2,6 +2,8 @@ import styled from "styled-components";
 
 export const BoosterContainer = styled.button`
   max-width: 200px;
+  border: none;
+  background: none;
 
   img {
     width: 100%;
