@@ -26,6 +26,7 @@ export const DeckContainer = styled.main`
     flex-wrap: wrap;
     margin-bottom: 10rem;
     min-height: 300px;
+    width: 100%;
     max-width: 950px;
     background-color: ${(props) => props.theme["red-500"]};
   }

@@ -9,7 +9,7 @@ import {
 import bg from "../../assets/Damian.jpg";
 import { useParallax } from "react-scroll-parallax";
 import { Card } from "../Card";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { CardContext } from "../../context/CardContext";
 //type
 import { CardType } from "../../lib/cards";
@@ -24,6 +24,7 @@ export function StartStore() {
   const parallax = useParallax({
     translateY: [-30, 35],
   });
+  const [isLoading, setIsLoading] = useState(false);
 
   const inDisplayCardIds: string[] = [
     "Arthemia",
@@ -37,8 +38,10 @@ export function StartStore() {
   async function handleBuy(card: CardType) {
     //addOwnCard(card);
     if (!user) {
+      window.alert("Por favor, crie uma conta ou registre-se para jogar!");
       return;
     }
+    setIsLoading(true);
     const userDocRef = doc(db, "users", user!.uid);
 
     const userDocSnapshot = await getDoc(userDocRef);
@@ -53,6 +56,7 @@ export function StartStore() {
       });
     }
     updateOwnedCards();
+    setIsLoading(false);
   }
 
   return (
@@ -79,6 +83,8 @@ export function StartStore() {
                   {OwnCards.filter((e) => e.id === inDisplayCards[1].id)
                     .length > 0 ? (
                     <>Possui</>
+                  ) : isLoading ? (
+                    <>Carregando...</>
                   ) : (
                     <>Comprar</>
                   )}
@@ -97,6 +103,8 @@ export function StartStore() {
                   {OwnCards.filter((e) => e.id === inDisplayCards[2].id)
                     .length > 0 ? (
                     <>Possui</>
+                  ) : isLoading ? (
+                    <>Carregando...</>
                   ) : (
                     <>Comprar</>
                   )}
@@ -115,6 +123,8 @@ export function StartStore() {
                   {OwnCards.filter((e) => e.id === inDisplayCards[0].id)
                     .length > 0 ? (
                     <>Possui</>
+                  ) : isLoading ? (
+                    <>Carregando...</>
                   ) : (
                     <>Comprar</>
                   )}
