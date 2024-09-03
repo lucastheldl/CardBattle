@@ -167,7 +167,7 @@ export const CharacterImage = styled.img<CharacterImageProps>`
   ${(props) =>
     props.hit <= 0
       ? css`
-          //animation: MoveUpDown 4s cubic-bezier(0.62, 0.67, 0.67, 1.05) infinite;
+          animation: MoveUpDown 4s cubic-bezier(0.62, 0.67, 0.67, 1.05) infinite;
         `
       : css`
           animation: GetHit 0.2s cubic-bezier(0.62, 0.67, 0.67, 1.05) 1;
@@ -185,6 +185,15 @@ export const CharacterImage = styled.img<CharacterImageProps>`
     }
     50% {
       transform: translate(10%, -5%);
+    }
+  }
+  @keyframes MoveUpDown {
+    0%,
+    100% {
+      transform: translate(2%, -5%);
+    }
+    50% {
+      transform: translate(2%, -0%);
     }
   }
   @keyframes Attack {
