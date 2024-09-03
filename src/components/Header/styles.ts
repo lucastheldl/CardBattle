@@ -12,6 +12,9 @@ export const HeaderContainer = styled.nav`
   border-bottom: 2px solid ${(props) => props.theme["red-500"]};
   margin-bottom: 2rem;
 
+  position: relative;
+  z-index: 10;
+
   .logo {
     position: relative;
     &::before {

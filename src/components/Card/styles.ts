@@ -2,6 +2,8 @@ import styled from "styled-components";
 
 interface StatusProps {
   rarity: "COMMON" | "RARE" | "LEGENDARY";
+  notInteractable?: boolean;
+  size?: "md" | "lg";
 }
 
 export const CardContainer = styled.button<StatusProps>`
@@ -9,11 +11,13 @@ export const CardContainer = styled.button<StatusProps>`
   flex-direction: column;
 
   align-items: center;
-  max-width: 180px;
-
-  height: 270px;
 
   background-color: ${(props) => props.theme["gray-900"]};
+  border-radius: 6px;
+  padding: 0.5rem;
+
+  transition: 0.2s ease-in-out;
+
   border: ${(props) => {
     switch (props.rarity) {
       case "COMMON":
@@ -30,15 +34,20 @@ export const CardContainer = styled.button<StatusProps>`
     animation: rgbAnimation 5s ease-in-out infinite;
   `}
 
-  border-radius: 6px;
-  padding: 0.5rem;
-
-  cursor: pointer;
-
-  transition: 0.2s ease-in-out;
-  &:hover {
+  ${(props) =>
+    !props.notInteractable
+      ? `
+    &:hover {
     transform: scale(1.5);
   }
+    width: 175px;
+    height: 270px;
+      cursor: pointer;
+  `
+      : `width: 275px;
+    height: 370px;
+    
+    `}
 
   @keyframes rgbAnimation {
     0% {
@@ -57,7 +66,7 @@ export const CardContainer = styled.button<StatusProps>`
 `;
 export const CardImageArea = styled.div`
   width: 100%;
-  height: 150px;
+  height: 60%;
   overflow: hidden;
 
   img {
