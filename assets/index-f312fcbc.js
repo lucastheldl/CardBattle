@@ -3252,6 +3252,10 @@ This typically indicates that your device does not have a healthy Internet conne
 
   margin: 0 auto;
 
+  p {
+    color: ${t=>t.theme["red-500"]};
+    font-weight: bold;
+  }
   .avaliableCards,
   .deck {
     display: flex;
@@ -3385,7 +3389,7 @@ This typically indicates that your device does not have a healthy Internet conne
       color: ${t=>t.theme["red-500"]};
     }
   }
-`,Fa=w.createContext({});function BM({children:t}){const[e,n]=w.useState("deck"),[r,i]=w.useState(!1),s=w.useCallback(a=>{n(a)},[]);function o(a){i(a)}return p.jsx(Fa.Provider,{value:{gameStage:e,attacked:r,changeGameStage:s,changeAttacked:o},children:t})}function WM(){const[t,e]=w.useState([]);return w.useEffect(()=>{async function n(){const r=Km(yn,"cards"),s=(await _T(r)).docs.map(o=>{const a=o.data();return{id:o.id,...a}});e(s)}n()},[]),{cards:t}}function HM(){const{user:t}=w.useContext(jt),[e,n]=w.useState(!0),[r,i]=w.useState([]),s=w.useCallback(async()=>{n(!0);try{if(!t)return;const a=kr(yn,"users",t.uid),l=await di(a);if(l.exists()){const c=l.data().ownedCards||[];console.log(c);const h=Km(yn,"cards");if(c.length<0){i([]),console.log("No ids");return}const d=yM(h,vM("__name__","in",c)),v=(await _T(d)).docs.map(_=>{const I=_.data();return{id:_.id,...I}});i(v)}else i([])}catch(a){console.error("Error fetching owned cards:",a)}finally{n(!1)}},[t]);return w.useEffect(()=>{s()},[t,s]),{ownedCards:r,loading:e,reFetchOwnedCards:()=>{s()}}}const br=w.createContext({});function GM({children:t}){const[e,n]=w.useState([]),[r,i]=w.useState([]),[s,o]=w.useState([]),[a,l]=w.useState(null),{user:u}=w.useContext(jt),{cards:c}=WM(),{ownedCards:h,reFetchOwnedCards:d}=HM();w.useEffect(()=>{u&&I()},[u]),w.useEffect(()=>{i(c)},[c]),w.useEffect(()=>{o(h),console.log("A lista de cartas possuídas foi atualizada:",h)},[h]);function g(m){n(f=>[...f,m])}function v(m){n(e.filter(f=>f.id!==m))}const _=w.useCallback(m=>{l(m)},[]);function I(){d()}return p.jsx(br.Provider,{value:{cardsInDeck:e,OwnCards:s,avaliableCards:r,selectedCard:a,addCardToDeck:g,removeCardFromDeck:v,changeSelectedCard:_,updateOwnedCards:I},children:t})}function pn(t){const{cardsInDeck:e,addCardToDeck:n,removeCardFromDeck:r,changeSelectedCard:i}=w.useContext(br),{gameStage:s,changeGameStage:o,changeAttacked:a}=w.useContext(Fa);function l(){switch(s){case"deck":u();break;case"selecting":c();break;case"display":return}}function u(){if(e&&e.find(h=>h.id===t.id)){r(t.id);return}e.length>=3||n(t)}function c(){i(t),o("battle"),a(!1)}return p.jsxs($M,{onClick:l,rarity:t.rarity,notInteractable:t.notInteractable,children:[p.jsx(jM,{children:p.jsx("img",{src:t.img,loading:"lazy"})}),p.jsx(FM,{children:p.jsx("strong",{children:t.name})}),p.jsx(UM,{children:t.moves&&t.moves.map(h=>p.jsxs("p",{children:["✨",h.name," | DMG:",h.damage]},h.name))}),p.jsxs(zM,{children:[p.jsxs("div",{className:"stat-container",children:[p.jsx(l1,{size:15}),p.jsx("p",{children:`: ${t.atk} |`})]}),p.jsxs("div",{className:"stat-container",children:[p.jsx(_x,{size:15}),p.jsx("p",{children:`: ${t.hp} |`})]}),p.jsxs("div",{className:"stat-container",children:[p.jsx(Cx,{size:15}),p.jsx("p",{children:`: ${t.def}`})]})]})]})}function qM(){const{cardsInDeck:t,changeSelectedCard:e,OwnCards:n}=w.useContext(br),{changeGameStage:r}=w.useContext(Fa);return w.useEffect(()=>{r("deck"),e(null)},[r]),p.jsxs(VM,{children:[p.jsx("h1",{children:"Montar Deck"}),p.jsx("section",{className:"avaliableCards",children:n.map(i=>w.createElement(pn,{...i,key:i.id}))}),p.jsx("section",{className:"deck",children:t&&t.map((i,s)=>w.createElement(pn,{...i,key:`${i.id}-${s}`}))})]})}const QM=V.div`
+`,Fa=w.createContext({});function BM({children:t}){const[e,n]=w.useState("deck"),[r,i]=w.useState(!1),s=w.useCallback(a=>{n(a)},[]);function o(a){i(a)}return p.jsx(Fa.Provider,{value:{gameStage:e,attacked:r,changeGameStage:s,changeAttacked:o},children:t})}function WM(){const[t,e]=w.useState([]);return w.useEffect(()=>{async function n(){const r=Km(yn,"cards"),s=(await _T(r)).docs.map(o=>{const a=o.data();return{id:o.id,...a}});e(s)}n()},[]),{cards:t}}function HM(){const{user:t}=w.useContext(jt),[e,n]=w.useState(!0),[r,i]=w.useState([]),s=w.useCallback(async()=>{n(!0);try{if(!t)return;const a=kr(yn,"users",t.uid),l=await di(a);if(l.exists()){const c=l.data().ownedCards||[];console.log(c);const h=Km(yn,"cards");if(c.length<0){i([]),console.log("No ids");return}const d=yM(h,vM("__name__","in",c)),v=(await _T(d)).docs.map(_=>{const I=_.data();return{id:_.id,...I}});i(v)}else i([])}catch(a){console.error("Error fetching owned cards:",a)}finally{n(!1)}},[t]);return w.useEffect(()=>{s()},[t,s]),{ownedCards:r,loading:e,reFetchOwnedCards:()=>{s()}}}const br=w.createContext({});function GM({children:t}){const[e,n]=w.useState([]),[r,i]=w.useState([]),[s,o]=w.useState([]),[a,l]=w.useState(null),{user:u}=w.useContext(jt),{cards:c}=WM(),{ownedCards:h,reFetchOwnedCards:d}=HM();w.useEffect(()=>{u&&I()},[u]),w.useEffect(()=>{i(c)},[c]),w.useEffect(()=>{o(h),console.log("A lista de cartas possuídas foi atualizada:",h)},[h]);function g(m){n(f=>[...f,m])}function v(m){n(e.filter(f=>f.id!==m))}const _=w.useCallback(m=>{l(m)},[]);function I(){d()}return p.jsx(br.Provider,{value:{cardsInDeck:e,OwnCards:s,avaliableCards:r,selectedCard:a,addCardToDeck:g,removeCardFromDeck:v,changeSelectedCard:_,updateOwnedCards:I},children:t})}function pn(t){const{cardsInDeck:e,addCardToDeck:n,removeCardFromDeck:r,changeSelectedCard:i}=w.useContext(br),{gameStage:s,changeGameStage:o,changeAttacked:a}=w.useContext(Fa);function l(){switch(s){case"deck":u();break;case"selecting":c();break;case"display":return}}function u(){if(e&&e.find(h=>h.id===t.id)){r(t.id);return}e.length>=3||n(t)}function c(){i(t),o("battle"),a(!1)}return p.jsxs($M,{onClick:l,rarity:t.rarity,notInteractable:t.notInteractable,children:[p.jsx(jM,{children:p.jsx("img",{src:t.img,loading:"lazy"})}),p.jsx(FM,{children:p.jsx("strong",{children:t.name})}),p.jsx(UM,{children:t.moves&&t.moves.map(h=>p.jsxs("p",{children:["✨",h.name," | DMG:",h.damage]},h.name))}),p.jsxs(zM,{children:[p.jsxs("div",{className:"stat-container",children:[p.jsx(l1,{size:15}),p.jsx("p",{children:`: ${t.atk} |`})]}),p.jsxs("div",{className:"stat-container",children:[p.jsx(_x,{size:15}),p.jsx("p",{children:`: ${t.hp} |`})]}),p.jsxs("div",{className:"stat-container",children:[p.jsx(Cx,{size:15}),p.jsx("p",{children:`: ${t.def}`})]})]})]})}function qM(){const{cardsInDeck:t,changeSelectedCard:e,OwnCards:n}=w.useContext(br),{changeGameStage:r}=w.useContext(Fa);return w.useEffect(()=>{r("deck"),e(null)},[r]),p.jsxs(VM,{children:[p.jsx("h1",{children:"Montar Deck"}),p.jsx("p",{children:"Passe o mouse na parte inferior da tela para ver suas cartas selecionadas"}),p.jsx("section",{className:"avaliableCards",children:n.map(i=>w.createElement(pn,{...i,key:i.id}))}),p.jsx("section",{className:"deck",children:t&&t.map((i,s)=>w.createElement(pn,{...i,key:`${i.id}-${s}`}))})]})}const QM=V.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -3449,6 +3453,7 @@ This typically indicates that your device does not have a healthy Internet conne
 
   width: 100%;
   max-width: 1120px;
+  min-height: 500px;
 
   margin: 0 auto;
   section {
@@ -3601,6 +3606,7 @@ This typically indicates that your device does not have a healthy Internet conne
   left: 0;
 
   width: 100%;
+  height: 750px;
   z-index: -10;
 
   filter: blur(3px);
@@ -3967,16 +3973,16 @@ This typically indicates that your device does not have a healthy Internet conne
   width: 1120px;
   margin: 0 auto;
 `,NV=V.div`
-  display: ${t=>t.state?"block":"none"}; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
+  display: ${t=>t.state?"block":"none"};
+  position: fixed;
+  z-index: 15;
   left: 0;
   top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  //overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0, 0, 0); /* Fallback color */
-  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+  width: 100%;
+  height: 100%;
+
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
 `,OV=V.div`
   position: relative;
   display: flex;
