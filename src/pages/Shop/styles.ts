@@ -16,17 +16,16 @@ interface ModalContainerProps {
   state: boolean;
 }
 export const ModalContainer = styled.div<ModalContainerProps>`
-  display: ${(props) =>
-    props.state ? "block" : "none"}; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
+  display: ${(props) => (props.state ? "block" : "none")};
+  position: fixed;
+  z-index: 15;
   left: 0;
   top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  //overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0, 0, 0); /* Fallback color */
-  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+  width: 100%;
+  height: 100%;
+
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
 `;
 
 interface ModalContent {
