@@ -12,6 +12,10 @@ export const DeckContainer = styled.main`
 
   margin: 0 auto;
 
+  p {
+    color: ${(props) => props.theme["red-500"]};
+    font-weight: bold;
+  }
   .avaliableCards,
   .deck {
     display: flex;

@@ -8,6 +8,7 @@ export const BattlesContainer = styled.main`
 
   width: 100%;
   max-width: 1120px;
+  min-height: 500px;
 
   margin: 0 auto;
   section {

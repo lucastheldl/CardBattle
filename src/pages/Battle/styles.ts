@@ -16,6 +16,7 @@ export const Bg = styled.img`
   left: 0;
 
   width: 100%;
+  height: 750px;
   z-index: -10;
 
   filter: blur(3px);

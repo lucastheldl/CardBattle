@@ -17,6 +17,10 @@ export function Deck() {
   return (
     <DeckContainer>
       <h1>Montar Deck</h1>
+      <p>
+        Passe o mouse na parte inferior da tela para ver suas cartas
+        selecionadas
+      </p>
       <section className="avaliableCards">
         {OwnCards.map((card) => {
           return <Card {...card} key={card.id} />;
