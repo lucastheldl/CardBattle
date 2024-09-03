@@ -21,7 +21,8 @@ export type CardType = {
   atk: number;
   hp: number;
   rarity: "COMMON" | "RARE" | "LEGENDARY";
-  moves: { name: string; damage: number; cooldown: number }[];
+  moves?: { name: string; damage: number; cooldown: number }[];
+  notInteractable?: boolean;
 };
 export type Boostertype = {
   id: string;

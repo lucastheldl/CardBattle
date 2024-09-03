@@ -30,27 +30,14 @@ export const Container = styled.div`
   max-width: 1300px;
 
   margin: 0 auto;
-
-  .character {
-    width: 600px;
-    position: absolute;
-    top: -100px;
-
-    z-index: -1;
-  }
-
-  .enemy {
-    width: 600px;
-    position: absolute;
-    top: -150px;
-
-    z-index: -1;
-  }
 `;
 interface DeckProps {
   gamestate: "display" | "deck" | "selecting" | "battle";
 }
 export const Deck = styled.div<DeckProps>`
+  position: absolute;
+  bottom: 0;
+  left: -250px;
   display: flex;
   gap: 0.5rem;
   height: 300px;
@@ -70,9 +57,11 @@ export const Deck = styled.div<DeckProps>`
     `}
 `;
 
-export const ImageContainer = styled.div`
+export const CharacterImageContainer = styled.div`
   position: relative;
   min-height: 600px;
+  margin: 0 auto;
+
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -89,7 +78,7 @@ export const LifeBar = styled.div<ContainerProps>`
 
   position: absolute;
   top: 430px;
-  left: 50px;
+  left: -50%;
 
   border: 1px solid ${(props) => props.theme["gray-900"]};
   border-radius: 6px;
@@ -120,6 +109,11 @@ interface EnemyImageProps {
   enemyattack: number;
 }
 export const EnemyImage = styled.img<EnemyImageProps>`
+  width: 500px;
+  position: absolute;
+  top: -50px;
+  right: -30%;
+
   ${(props) =>
     props.hit <= 0
       ? css`
@@ -135,12 +129,6 @@ export const EnemyImage = styled.img<EnemyImageProps>`
     css`
       animation: EnemyAttack 0.5s cubic-bezier(0.65, 0.22, 0.37, 1.01) 1;
     `}
-
-  width: 700px;
-  position: absolute;
-  top: -30;
-  left: -70px;
-  z-index: -1;
 
   @keyframes MoveUpDown {
     0%,
@@ -171,10 +159,15 @@ interface CharacterImageProps {
   playerattack: number;
 }
 export const CharacterImage = styled.img<CharacterImageProps>`
+  width: 500px;
+  position: absolute;
+  top: -50px;
+  right: -30%;
+
   ${(props) =>
     props.hit <= 0
       ? css`
-          //animation: MoveUpDown 4s cubic-bezier(0.62, 0.67, 0.67, 1.05) infinite;
+          animation: MoveUpDown 4s cubic-bezier(0.62, 0.67, 0.67, 1.05) infinite;
         `
       : css`
           animation: GetHit 0.2s cubic-bezier(0.62, 0.67, 0.67, 1.05) 1;
@@ -194,6 +187,15 @@ export const CharacterImage = styled.img<CharacterImageProps>`
       transform: translate(10%, -5%);
     }
   }
+  @keyframes MoveUpDown {
+    0%,
+    100% {
+      transform: translate(2%, -5%);
+    }
+    50% {
+      transform: translate(2%, -0%);
+    }
+  }
   @keyframes Attack {
     0% {
       transform: translate(0%, -5%);
@@ -211,10 +213,14 @@ export const CharacterImage = styled.img<CharacterImageProps>`
 `;
 
 export const AttackOptions = styled.div`
+  position: absolute;
+  bottom: 300px;
+  left: -50%;
   display: flex;
   gap: 1rem;
   align-items: center;
   justify-content: center;
+  min-width: 100px;
 `;
 interface AttackBtnProps {
   cooldown: number;

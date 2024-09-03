@@ -5,10 +5,10 @@ import {
   BattleContainer,
   Bg,
   CharacterImage,
+  CharacterImageContainer,
   Container,
   Deck,
   EnemyImage,
-  ImageContainer,
   LifeBar,
 } from "./styles";
 
@@ -141,7 +141,7 @@ export function Battle() {
     setCurrentPlayerHp(selectedCard.hp);
     setCharacterCurrentImg(selectedCard.characterImg);
     setCurrentMoves(
-      selectedCard.moves.map((m) => ({ ...m, defauldCooldown: m.cooldown }))
+      selectedCard.moves!.map((m) => ({ ...m, defauldCooldown: m.cooldown }))
     );
   }, [selectedCard]);
 
@@ -150,7 +150,7 @@ export function Battle() {
       <Bg src={battleObject!.scenarioImg} className="bg" />
 
       <Container>
-        <ImageContainer>
+        <CharacterImageContainer>
           <EnemyImage
             src={battleObject!.characterImg}
             onAnimationEnd={() => {
@@ -159,15 +159,16 @@ export function Battle() {
             }}
             enemyattack={enemyAttack}
             hit={hit}
-            className="enemy"
+            className="character"
           />
+          <Card {...battleObject} rarity={"COMMON"} notInteractable={true} />
           <LifeBar hpamount={(100 * currentHp) / battleObject!.hp}>
             <p>{battleObject!.name}</p>
             <div className="bar"></div>
           </LifeBar>
-        </ImageContainer>
+        </CharacterImageContainer>
 
-        <ImageContainer>
+        <CharacterImageContainer>
           <CharacterImage
             src={characterCurrentImg}
             onAnimationEnd={() => {
@@ -178,6 +179,13 @@ export function Battle() {
             hit={playerHit}
             className="character"
           />
+          {selectedCard && (
+            <Card
+              {...selectedCard}
+              rarity={selectedCard.rarity}
+              notInteractable={true}
+            />
+          )}
           {/*Handle card attack options */}
           {!attacked && selectedCard && (
             <AttackOptions>
@@ -219,7 +227,7 @@ export function Battle() {
                 return <Card {...card} key={`${card.id}-${i}`} />;
               })}
           </Deck>
-        </ImageContainer>
+        </CharacterImageContainer>
       </Container>
     </BattleContainer>
   );
