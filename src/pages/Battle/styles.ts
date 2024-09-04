@@ -20,6 +20,10 @@ export const Bg = styled.img`
   z-index: -10;
 
   filter: blur(3px);
+
+  @media (max-width: 830px) {
+    height: 1000px;
+  }
 `;
 
 export const Container = styled.div`
@@ -31,6 +35,9 @@ export const Container = styled.div`
   max-width: 1300px;
 
   margin: 0 auto;
+  @media (max-width: 830px) {
+    flex-direction: column;
+  }
 `;
 interface DeckProps {
   gamestate: "display" | "deck" | "selecting" | "battle";
@@ -67,6 +74,9 @@ export const CharacterImageContainer = styled.div`
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
+  @media (max-width: 830px) {
+    min-height: 500px;
+  }
 `;
 
 interface ContainerProps {

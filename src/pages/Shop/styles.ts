@@ -9,8 +9,12 @@ export const ShopContainer = styled.div`
   display: flex;
   gap: 2rem;
 
-  width: 1120px;
+  max-width: 1120px;
   margin: 0 auto;
+  @media (max-width: 830px) {
+    flex-direction: column;
+    justify-content: center;
+  }
 `;
 interface ModalContainerProps {
   state: boolean;
