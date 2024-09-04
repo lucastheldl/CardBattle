@@ -47,6 +47,10 @@ export const Deck = styled.div`
   padding: 1rem;
   //background-color: ${(props) => props.theme["red-500"]};
   border-radius: 6px;
+  @media (max-width: 730px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 export const CardContainer = styled.div`

@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const HeaderContainer = styled.nav`
   display: flex;
   justify-content: space-between;
+  align-items: center;
 
   padding: 1rem;
 
@@ -14,6 +15,14 @@ export const HeaderContainer = styled.nav`
 
   position: relative;
   z-index: 10;
+
+  .burguer-menu {
+    color: ${(props) => props.theme["red-500"]};
+    &:hover {
+      transition: 0.2s all;
+      color: ${(props) => props.theme["red-300"]};
+    }
+  }
 
   .logo {
     position: relative;
@@ -37,7 +46,7 @@ export const HeaderContainer = styled.nav`
     }
   }
 
-  ul {
+  .desktop-navlinks {
     display: flex;
     align-items: center;
     gap: 1rem;
@@ -71,6 +80,21 @@ export const HeaderContainer = styled.nav`
       span {
         color: ${(props) => props.theme["red-500"]};
       }
+    }
+  }
+  @media (max-width: 730px) {
+    .desktop-navlinks {
+      display: none;
+    }
+  }
+  @media (max-width: 860px) {
+    .criate-opt {
+      display: none;
+    }
+  }
+  @media (min-width: 730px) {
+    .burguer-menu {
+      display: none;
     }
   }
 `;

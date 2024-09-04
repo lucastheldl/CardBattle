@@ -8,21 +8,28 @@ import {
   LogIn,
   Book,
   LogOut,
+  Menu,
 } from "lucide-react";
 import { AuthContext } from "../../context/AuthContext";
-import { useContext } from "react";
+import { useContext, useState } from "react";
+import { BurguerMenu } from "../BurguerMenu";
 
 export function Header() {
   const { user, logOut } = useContext(AuthContext);
   const { userFileRef } = useContext(AuthContext);
+  const [burgerMenuState, setBurguerMenuState] = useState<boolean>(false);
+
+  function toggleBurguerMenu() {
+    setBurguerMenuState(!burgerMenuState);
+  }
   return (
     <HeaderContainer>
       <NavLink to="/CardBattle/" className="logo">
         Card<span>Battle</span>
       </NavLink>
-      <ul>
+      <ul className="desktop-navlinks">
         {userFileRef && userFileRef.role === "ADMIN" ? (
-          <li>
+          <li className="criate-opt">
             <NavLink to="/CardBattle/createCard">
               <Pencil width={22} />
               Criar
@@ -76,6 +83,10 @@ export function Header() {
           </>
         )}
       </ul>
+      <button onClick={toggleBurguerMenu}>
+        <Menu size={32} className="burguer-menu" />
+      </button>
+      <BurguerMenu state={burgerMenuState} toggle={toggleBurguerMenu} />
     </HeaderContainer>
   );
 }

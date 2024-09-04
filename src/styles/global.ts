@@ -21,7 +21,6 @@ export const GlobalStyle = createGlobalStyle`
     background-color: ${(props) => props.theme["gray-900"]};
     
   }
-
   }`;
 interface DefaultBtnProps {
   fontSize?: number;
