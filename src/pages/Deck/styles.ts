@@ -6,6 +6,7 @@ export const DeckContainer = styled.main`
   align-items: center;
   gap: 1rem;
   position: relative;
+  padding: 0 0.5rem;
 
   width: 100%;
   max-width: 1120px;
@@ -25,6 +26,9 @@ export const DeckContainer = styled.main`
     padding: 1rem;
 
     border-radius: 6px;
+    @media (max-width: 500px) {
+      padding: 0.5rem;
+    }
   }
   .avaliableCards {
     flex-wrap: wrap;

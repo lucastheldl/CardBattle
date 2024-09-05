@@ -19,7 +19,7 @@ function App() {
       // For HTML elements, forward the prop if it is a valid HTML attribute
       return isPropValid(propName);
     }
-    // For other elements, forward all props
+
     return true;
   }
   return (

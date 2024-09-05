@@ -22,6 +22,6 @@ export const MadeWithContainer = styled.div`
   margin: 0 auto;
 
   img {
-    width: 100px;
+    min-width: 80px;
   }
 `;

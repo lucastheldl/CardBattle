@@ -44,8 +44,7 @@ interface DeckProps {
 }
 export const Deck = styled.div<DeckProps>`
   position: absolute;
-  bottom: 0;
-  left: -250px;
+
   display: flex;
   gap: 0.5rem;
   height: 300px;
@@ -63,6 +62,15 @@ export const Deck = styled.div<DeckProps>`
       transform: translateX(100%);
       opacity: 0;
     `}
+
+  @media (min-width: 500px) {
+    bottom: 0;
+    left: -250px;
+  }
+  @media (max-width: 500px) {
+    bottom: 150px;
+    left: -250px;
+  }
 `;
 
 export const CharacterImageContainer = styled.div`
@@ -88,8 +96,6 @@ export const LifeBar = styled.div<ContainerProps>`
   height: 20px;
 
   position: absolute;
-  top: 430px;
-  left: -50%;
 
   border: 1px solid ${(props) => props.theme["gray-900"]};
   border-radius: 6px;
@@ -112,6 +118,15 @@ export const LifeBar = styled.div<ContainerProps>`
     width: ${(props) => props.hpamount}%;
     height: 100%;
     background-color: ${(props) => props.theme["red-500"]};
+  }
+  @media (min-width: 500px) {
+    top: 430px;
+    left: -50%;
+  }
+  @media (max-width: 500px) {
+    width: 300px;
+    top: 430px;
+    left: -3%;
   }
 `;
 
@@ -225,13 +240,21 @@ export const CharacterImage = styled.img<CharacterImageProps>`
 
 export const AttackOptions = styled.div`
   position: absolute;
-  bottom: 300px;
-  left: -50%;
+
   display: flex;
   gap: 1rem;
   align-items: center;
   justify-content: center;
   min-width: 100px;
+
+  @media (min-width: 500px) {
+    bottom: 300px;
+    left: -50%;
+  }
+  @media (max-width: 500px) {
+    bottom: 300px;
+    left: 0;
+  }
 `;
 interface AttackBtnProps {
   cooldown: number;
