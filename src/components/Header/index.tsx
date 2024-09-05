@@ -83,8 +83,8 @@ export function Header() {
           </>
         )}
       </ul>
-      <button onClick={toggleBurguerMenu}>
-        <Menu size={32} className="burguer-menu" />
+      <button onClick={toggleBurguerMenu} className="burguer-menu">
+        <Menu size={32} />
       </button>
       <BurguerMenu state={burgerMenuState} toggle={toggleBurguerMenu} />
     </HeaderContainer>

@@ -26,8 +26,9 @@ export const DeckContainer = styled.main`
     padding: 1rem;
 
     border-radius: 6px;
-    @media (max-width: 500px) {
+    @media (max-width: 582px) {
       padding: 0.5rem;
+      justify-content: center;
     }
   }
   .avaliableCards {
