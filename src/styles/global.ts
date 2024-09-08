@@ -42,7 +42,11 @@ export const DefaultBtn = styled.button<DefaultBtnProps>`
   border: 1px solid
     ${(props) => (props.dark ? props.theme["red-500"] : "transparent")};
 
-  &:hover {
+  &:disabled {
+    background-color: ${(props) => props.theme["gray-800"]};
+    cursor: not-allowed;
+  }
+  &:not(:disabled):hover {
     transition: 0.2s background-color;
     background-color: ${(props) => props.theme["red-300"]};
     border: 1px solid ${(props) => props.theme["gray-800"]};

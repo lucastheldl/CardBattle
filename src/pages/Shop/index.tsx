@@ -17,6 +17,7 @@ import { CardContext } from "../../context/CardContext";
 import { AuthContext } from "../../context/AuthContext";
 
 export function Shop() {
+  const [isLoading, setIsLoading] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [cardBought, setCardBought] = useState<CardType | null>(null);
   const [currentBooster, setIsCurrentBooster] = useState<Boostertype | null>(
@@ -38,6 +39,7 @@ export function Shop() {
     if (!user || !userFileRef) {
       return;
     }
+    setIsLoading(true);
 
     if (userFileRef.money < booster.cost) {
       return window.alert("Pontos insuficientes!");
@@ -74,6 +76,7 @@ export function Shop() {
 
     setIsCurrentState("DISPLAYING");
     setCardBought(card);
+    setIsLoading(false);
   }
   function returnToBooster() {
     setIsCurrentState("IDLE");
@@ -123,6 +126,7 @@ export function Shop() {
                     ? () => buyRandomCard(currentBooster!)
                     : returnToBooster
                 }
+                disabled={isLoading}
               >
                 {currentState === "IDLE"
                   ? `Comprar: ${currentBooster!.cost}⁋`
