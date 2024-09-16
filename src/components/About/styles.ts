@@ -6,7 +6,7 @@ export const AboutWrapper = styled.section`
   align-items: center;
   width: 100%;
   max-width: 1120px;
-  min-height: 500px;
+  min-height: 300px;
 
   margin: 0 auto 3rem;
 
@@ -15,8 +15,8 @@ export const AboutWrapper = styled.section`
     font-size: 2.5rem;
     text-align: left;
   }
-  img {
-    @media (max-width: 900px) {
+  @media (max-width: 900px) {
+    img {
       display: none;
     }
   }
@@ -34,5 +34,8 @@ export const AboutContainer = styled.div`
     font-size: 1.5rem;
     text-align: justify;
     color: ${(props) => props.theme["red-300"]};
+  }
+  @media (max-width: 900px) {
+    align-items: center;
   }
 `;
